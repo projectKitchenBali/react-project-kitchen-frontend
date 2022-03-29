@@ -1,4 +1,5 @@
 {
+  "editor.tabSize": 2,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "scss.validate": false,
   "css.validate": false,
@@ -6,6 +7,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
+    
   },
   "eslint.validate": [
     "javascript",
@@ -13,26 +15,5 @@
     "javascriptreact",
     "typescriptreact"
   ],
-  "[typescriptreact]": {
-    "editor.formatOnSave": true
-  },
-  "[javascriptreact]": {
-    "editor.formatOnSave": true
-  },
-  "[javascript]": {
-    "editor.formatOnSave": true
-  },
-  "[css]": {
-    "editor.formatOnSave": true
-  },
-  "[html]": {
-    "editor.formatOnSave": false
-  },
-  "[json]": {
-    "editor.formatOnSave": true
-  },
-  "[jsonc]": {
-    "editor.formatOnSave": true
-  },
   "eslint.alwaysShowStatus": true
 }
