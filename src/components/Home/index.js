@@ -56,8 +56,8 @@ class Home extends React.Component {
 					<ToDelete />
 
 					{/* <div className="row">
-            <MainView />
 
+            <MainView />
             <div className="col-md-3">
               <div className="sidebar">
 
