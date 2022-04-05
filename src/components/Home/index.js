@@ -11,7 +11,7 @@ import {
 } from "../../constants/actionTypes";
 
 // YOU WILL DELETE NEXT LINE SOON
-import ToDelete from "./ToDelete";
+//  import ToDelete from "./ToDelete";
 
 const Promise = global.Promise;
 
@@ -53,23 +53,21 @@ class Home extends React.Component {
 				<Banner token={this.props.token} appName={this.props.appName} />
 				<div className="container page">
 					{/* THIS COMPONENT WILL BE DELETED THIS IS WELCOME */}
-					<ToDelete />
+					{/* <ToDelete /> */}
 
-					{/* <div className="row">
+					<div className="row">
+						<MainView />
+						<div className="col-md-3">
+							<div className="sidebar">
+								<p>Popular Tags</p>
 
-            <MainView />
-            <div className="col-md-3">
-              <div className="sidebar">
-
-                <p>Popular Tags</p>
-
-                <Tags
-                  tags={this.props.tags}
-                  onClickTag={this.props.onClickTag} />
-
-              </div>
-            </div>
-          </div> */}
+								<Tags
+									tags={this.props.tags}
+									onClickTag={this.props.onClickTag}
+								/>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		);
