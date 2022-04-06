@@ -5,5 +5,7 @@ module.exports = {
 		"stylelint-prettier/recommended",
 	],
 	plugins: ["stylelint-order"],
-	rules: {},
+	rules: {
+		"selector-class-pattern": null,
+	},
 };
