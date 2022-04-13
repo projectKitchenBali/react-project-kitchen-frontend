@@ -1,0 +1,47 @@
+@font-face {
+	font-family: "JetBrains Mono";
+	src: url("../../fonts/JetBrainsMono-Regular.ttf");
+}
+
+.main {
+	float: right;
+	width: fit-content;
+	height: 40px;
+	font-family: "JetBrains Mono";
+	padding: 8px 16px;
+	font-size: 16px;
+	line-height: 24px;
+	background-color: #4c4cff;
+	border: 0px;
+	border-radius: 20px;
+	color: #f2f2f3;
+}
+.main__disabled {
+	float: right;
+	width: fit-content;
+	height: 40px;
+	font-family: "JetBrains Mono";
+	padding: 8px 16px;
+	font-size: 16px;
+	line-height: 24px;
+	background-color: #3a3a55;
+	border: 0px;
+	border-radius: 20px;
+	color: #8585ad;
+}
+.main:hover {
+	background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+		#4c4cff;
+}
+.main:active {
+	background: linear-gradient(
+			0deg,
+			rgba(255, 255, 255, 0.2),
+			rgba(255, 255, 255, 0.2)
+		),
+		#4c4cff;
+	outline: 0px;
+}
+.main:focus {
+	outline: 0px;
+}
