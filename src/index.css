@@ -1,0 +1,69 @@
+@font-face {
+	font-weight: 400;
+	font-family: JetBrainsMono-Regular;
+	font-style: normal;
+	src: url("./assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+}
+
+@font-face {
+	font-weight: 700;
+	font-family: "Exo2-Bold";
+	font-style: normal;
+	src: url("./assets/fonts/Exo2-Bold.woff2") format("woff2");
+}
+
+.text_type_main-caption {
+	font-weight: bold;
+	font-size: 12px;
+	font-family: JetBrainsMono-Regular, sans-serif;
+	line-height: 16px;
+}
+
+.text_type_main-default {
+	font-weight: bold;
+	font-size: 16px;
+	font-family: JetBrainsMono-Regular, sans-serif;
+	line-height: 24px;
+}
+
+.text_type_main-headline {
+	font-weight: bold;
+	font-size: 24px;
+	font-family: "Exo2-Bold", sans-serif;
+	line-height: 28px;
+}
+
+.text_type_main-h2 {
+	font-weight: bold;
+	font-size: 36px;
+	font-family: "Exo2-Bold", sans-serif;
+	line-height: 40px;
+}
+
+.text_type_main-h1 {
+	font-weight: bold;
+	font-size: 64px;
+	font-family: "Exo2-Bold", sans-serif;
+	line-height: 64px;
+}
+
+.text {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	color: #8585adff;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+	color: inherit;
+	text-decoration: none;
+}
