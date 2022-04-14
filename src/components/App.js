@@ -14,6 +14,7 @@ import Register from "../components/Register";
 import Settings from "../components/Settings";
 import { store } from "../store";
 import { push } from "react-router-redux";
+import Navbar from "../new-components/navbar/navbar";
 
 const mapStateToProps = (state) => {
 	return {
@@ -52,6 +53,10 @@ class App extends React.Component {
 		if (this.props.appLoaded) {
 			return (
 				<div>
+					<Navbar
+						appName={this.props.appName}
+						currentUser={this.props.currentUser}
+					/>
 					<Header
 						appName={this.props.appName}
 						currentUser={this.props.currentUser}
