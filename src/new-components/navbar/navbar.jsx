@@ -200,7 +200,7 @@ function Navbar({ appName, currentUser }) {
 					href="/"
 					className={`${styles["navbar_shadow"]} text text_type_main-headline`}
 				>
-					Проектная кухня
+					{appName}
 				</a>
 				<LoggedOutView currentUser={currentUser} />
 				<LoggedInView currentUser={currentUser} />
