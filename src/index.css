@@ -8,19 +8,19 @@
 @font-face {
 	font-weight: 700;
 	font-family: "Exo2-Bold";
-	font-style: normal;
+	font-style: bold;
 	src: url("./assets/fonts/Exo2-Bold.woff2") format("woff2");
 }
 
 .text_type_main-caption {
-	font-weight: bold;
+	font-weight: normal;
 	font-size: 12px;
 	font-family: JetBrainsMono-Regular, sans-serif;
 	line-height: 16px;
 }
 
 .text_type_main-default {
-	font-weight: bold;
+	font-weight: normal;
 	font-size: 16px;
 	font-family: JetBrainsMono-Regular, sans-serif;
 	line-height: 24px;
