@@ -11,6 +11,7 @@ import {
 
 import styles from "./navbar.module.css";
 
+// TODO при переходе на react router v6 от этого можно будет избавиться
 const CustomNavLink = ({
 	to,
 	exact,

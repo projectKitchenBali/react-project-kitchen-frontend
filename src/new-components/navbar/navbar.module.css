@@ -23,6 +23,7 @@
 .navbar_primary {
 	margin-left: 24px;
 	color: #f2f2f3;
+	font-weight: bold;
 	fill: #f2f2f3;
 	stroke: #f2f2f3;
 }
@@ -30,6 +31,7 @@
 .navbar_secondary {
 	margin-left: 24px;
 	color: #8585ad;
+	font-weight: bold;
 	fill: #8585ad;
 	stroke: #8585ad;
 }
