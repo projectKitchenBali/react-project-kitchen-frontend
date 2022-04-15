@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 
 import {
 	HomeIcon,
@@ -11,45 +11,131 @@ import {
 
 import styles from "./navbar.module.css";
 
+const CustomNavLink = ({
+	to,
+	exact,
+	strict,
+	location,
+	className,
+	activeStyle,
+	style,
+	isActive: getIsActive,
+	children,
+	...rest
+}) => (
+	<Route
+		path={typeof to === "object" ? to.pathname : to}
+		exact={exact}
+		strict={strict}
+		location={location}
+	>
+		{({ location, match }) => {
+			const isActive = !!(getIsActive ? getIsActive(match, location) : match);
+			const moddedClassName = `${className || ""} ${
+				isActive ? styles["navbar_primary"] : styles["navbar_secondary"]
+			}`;
+			return (
+				<Link
+					to={to}
+					className={moddedClassName}
+					style={isActive ? { ...style, ...activeStyle } : style}
+					{...rest}
+				>
+					{typeof children === "function" ? children({ isActive }) : children}
+				</Link>
+			);
+		}}
+	</Route>
+);
+
 const LoggedInView = ({ currentUser, history }) => {
 	console.log(history);
 	return (
 		currentUser && (
 			<ul>
-				<li className={styles["navbar_primary"]}>
-					<Link to="/" className={"text text_type_main-default"}>
-						<div className={styles["icon_padding"]}>
-							<HomeIcon type="primary" />
-						</div>
-						Главная
-					</Link>
+				<li className="text text_type_main-default">
+					<CustomNavLink to="/" exact={true}>
+						{({ isActive }) =>
+							isActive ? (
+								<>
+									<div className={styles["icon_padding"]}>
+										<HomeIcon type={"none"} />
+									</div>
+									Главная
+								</>
+							) : (
+								<>
+									<div className={styles["icon_padding"]}>
+										<HomeIcon type={"none"} />
+									</div>
+									Главная
+								</>
+							)
+						}
+					</CustomNavLink>
 				</li>
-				<li className={styles["navbar_secondary"]}>
-					<Link to="/editor" className={"text text_type_main-default"}>
-						<div className={styles["icon_padding"]}>
-							<EditIcon type="secondary" />
-						</div>
-						Новая запись
-					</Link>
+				<li className="text text_type_main-default">
+					<CustomNavLink to="/editor" exact={true}>
+						{({ isActive }) =>
+							isActive ? (
+								<>
+									<div className={styles["icon_padding"]}>
+										<EditIcon type={"none"} />
+									</div>
+									Новая запись
+								</>
+							) : (
+								<>
+									<div className={styles["icon_padding"]}>
+										<EditIcon type={"none"} />
+									</div>
+									Новая запись
+								</>
+							)
+						}
+					</CustomNavLink>
 				</li>
-				<li className={styles["navbar_secondary"]}>
-					<Link to="/settings" className={"text text_type_main-default"}>
-						<div className={styles["icon_padding"]}>
-							<SettingsIcon type="secondary" />
-						</div>
-						Настройки
-					</Link>
+				<li className="text text_type_main-default">
+					<CustomNavLink to="/settings" exact={true}>
+						{({ isActive }) =>
+							isActive ? (
+								<>
+									<div className={styles["icon_padding"]}>
+										<SettingsIcon type={"none"} />
+									</div>
+									Настройки
+								</>
+							) : (
+								<>
+									<div className={styles["icon_padding"]}>
+										<SettingsIcon type={"none"} />
+									</div>
+									Настройки
+								</>
+							)
+						}
+					</CustomNavLink>
 				</li>
-				<li className={styles["navbar_secondary"]}>
-					<Link
-						to={`/@${currentUser.username}`}
-						className={"text text_type_main-default"}
-					>
-						<div className={styles["icon_padding"]}>
-							<AvatarIcon type="secondary" />
-						</div>
-						{currentUser.username}
-					</Link>
+				<li className="text text_type_main-default">
+					<CustomNavLink to={`/@${currentUser.username}`}>
+						{({ isActive }) =>
+							isActive ? (
+								<>
+									<div className={styles["icon_padding"]}>
+										<AvatarIcon />
+									</div>
+									{currentUser.username}
+								</>
+							) : (
+								<>
+									<div className={styles["icon_padding"]}>
+										<AvatarIcon />
+									</div>
+									{currentUser.username}
+								</>
+							)
+						}
+					</CustomNavLink>
 				</li>
 			</ul>
 		)
@@ -60,28 +146,53 @@ const LoggedOutView = ({ currentUser }) => {
 	return (
 		!currentUser && (
 			<ul>
-				<li className={styles["navbar_primary"]}>
-					<Link to="/" className={"text text_type_main-default"}>
-						<div className={styles["icon_padding"]}>
-							<HomeIcon />
-						</div>
-						Главная
-					</Link>
+				<li className="text text_type_main-default">
+					<CustomNavLink to="/" exact={true}>
+						{({ isActive }) =>
+							isActive ? (
+								<>
+									<div className={styles["icon_padding"]}>
+										<HomeIcon type={"none"} />
+									</div>
+									Главная
+								</>
+							) : (
+								<>
+									<div className={styles["icon_padding"]}>
+										<HomeIcon type={"none"} />
+									</div>
+									Главная
+								</>
+							)
+						}
+					</CustomNavLink>
 				</li>
-				<li className={styles["navbar_secondary"]}>
-					<Link to="/login" className={"text text_type_main-default"}>
-						<div className={styles["icon_padding"]}>
-							<LoginIcon type="secondary" />
-						</div>
-						Войти
-					</Link>
+				<li className="text text_type_main-default">
+					<CustomNavLink to="/login" exact={true}>
+						{({ isActive }) =>
+							isActive ? (
+								<>
+									<div className={styles["icon_padding"]}>
+										<LoginIcon type={"none"} />
+									</div>
+									Войти
+								</>
+							) : (
+								<>
+									<div className={styles["icon_padding"]}>
+										<LoginIcon type={"none"} />
+									</div>
+									Войти
+								</>
+							)
+						}
+					</CustomNavLink>
 				</li>
 			</ul>
 		)
 	);
 };
-function Navbar({ appName, currentUser, history }) {
-	console.log(history);
+function Navbar({ appName, currentUser }) {
 	return (
 		<div className={styles["navbar_container"]}>
 			<nav className={styles["navbar"]}>
@@ -98,4 +209,4 @@ function Navbar({ appName, currentUser, history }) {
 	);
 }
 
-export default withRouter(Navbar);
+export default Navbar;

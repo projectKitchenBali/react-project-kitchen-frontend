@@ -23,11 +23,15 @@
 .navbar_primary {
 	margin-left: 24px;
 	color: #f2f2f3;
+	fill: #f2f2f3;
+	stroke: #f2f2f3;
 }
 
 .navbar_secondary {
 	margin-left: 24px;
 	color: #8585ad;
+	fill: #8585ad;
+	stroke: #8585ad;
 }
 
 .icon_padding {
@@ -45,6 +49,18 @@ a {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+a .icon_padding {
+	fill: inherit;
+	stroke: inherit;
+}
+
+a:hover .icon_padding,
+a:focus .icon_padding,
+a:active .icon_padding {
+	fill: #f2f2f3;
+	stroke: #f2f2f3;
 }
 
 ul {

@@ -8,6 +8,8 @@ const chooseColor = (type) => {
 			return "#00ccccff";
 		case "error":
 			return "#f20d33ff";
+		case "none":
+			return undefined;
 	}
 };
 
