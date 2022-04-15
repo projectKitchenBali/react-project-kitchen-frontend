@@ -47,31 +47,31 @@
 	margin-left: 24px;
 }
 
-a {
+.navbar a {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-a .icon_padding {
+.navbar a .icon_padding {
 	fill: inherit;
 	stroke: inherit;
 }
 
-a:hover .icon_padding,
-a:focus .icon_padding,
-a:active .icon_padding {
+.navbar a:hover .icon_padding,
+.navbar a:focus .icon_padding,
+.navbar a:active .icon_padding {
 	fill: #f2f2f3;
 	stroke: #f2f2f3;
 }
 
-ul {
+.navbar ul {
 	margin: 0;
 	padding: 0;
 	text-decoration: none;
 	list-style-type: none;
 }
 
-li {
+.navbar li {
 	float: left;
 }
