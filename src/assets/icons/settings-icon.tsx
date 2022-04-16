@@ -1,7 +1,7 @@
 import chooseColor from "./chooseColor";
 
 interface Types {
-	type?: "primary" | "secondary" | "success" | "error";
+	type?: "primary" | "secondary" | "success" | "error" | "inherit";
 	width?: number;
 	height?: number;
 	onClick?: () => void;
