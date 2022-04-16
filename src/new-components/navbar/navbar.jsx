@@ -42,7 +42,7 @@ const CustomNavLink = ({
 					style={isActive ? { ...style, ...activeStyle } : style}
 					{...rest}
 				>
-					{typeof children === "function" ? children({ isActive }) : children}
+					{children}
 				</Link>
 			);
 		}}
@@ -50,92 +50,39 @@ const CustomNavLink = ({
 );
 
 const LoggedInView = ({ currentUser, history }) => {
-	console.log(history);
 	return (
 		currentUser && (
 			<ul>
 				<li className="text text_type_main-default">
 					<CustomNavLink to="/" exact={true}>
-						{({ isActive }) =>
-							isActive ? (
-								<>
-									<div className={styles["icon_padding"]}>
-										<HomeIcon type={"none"} />
-									</div>
-									Главная
-								</>
-							) : (
-								<>
-									<div className={styles["icon_padding"]}>
-										<HomeIcon type={"none"} />
-									</div>
-									Главная
-								</>
-							)
-						}
+						<div className={styles["icon_padding"]}>
+							<HomeIcon type={"none"} />
+						</div>
+						Главная
 					</CustomNavLink>
 				</li>
 				<li className="text text_type_main-default">
 					<CustomNavLink to="/editor" exact={true}>
-						{({ isActive }) =>
-							isActive ? (
-								<>
-									<div className={styles["icon_padding"]}>
-										<EditIcon type={"none"} />
-									</div>
-									Новая запись
-								</>
-							) : (
-								<>
-									<div className={styles["icon_padding"]}>
-										<EditIcon type={"none"} />
-									</div>
-									Новая запись
-								</>
-							)
-						}
+						<div className={styles["icon_padding"]}>
+							<EditIcon type={"none"} />
+						</div>
+						Новая запись
 					</CustomNavLink>
 				</li>
 				<li className="text text_type_main-default">
 					<CustomNavLink to="/settings" exact={true}>
-						{({ isActive }) =>
-							isActive ? (
-								<>
-									<div className={styles["icon_padding"]}>
-										<SettingsIcon type={"none"} />
-									</div>
-									Настройки
-								</>
-							) : (
-								<>
-									<div className={styles["icon_padding"]}>
-										<SettingsIcon type={"none"} />
-									</div>
-									Настройки
-								</>
-							)
-						}
+						<div className={styles["icon_padding"]}>
+							<SettingsIcon type={"none"} />
+						</div>
+						Настройки
 					</CustomNavLink>
 				</li>
 				<li className="text text_type_main-default">
 					<CustomNavLink to={`/@${currentUser.username}`}>
-						{({ isActive }) =>
-							isActive ? (
-								<>
-									<div className={styles["icon_padding"]}>
-										<AvatarIcon />
-									</div>
-									{currentUser.username}
-								</>
-							) : (
-								<>
-									<div className={styles["icon_padding"]}>
-										<AvatarIcon />
-									</div>
-									{currentUser.username}
-								</>
-							)
-						}
+						<div className={styles["icon_padding"]}>
+							<AvatarIcon />
+						</div>
+						{currentUser.username}
 					</CustomNavLink>
 				</li>
 			</ul>
@@ -149,44 +96,18 @@ const LoggedOutView = ({ currentUser }) => {
 			<ul>
 				<li className="text text_type_main-default">
 					<CustomNavLink to="/" exact={true}>
-						{({ isActive }) =>
-							isActive ? (
-								<>
-									<div className={styles["icon_padding"]}>
-										<HomeIcon type={"none"} />
-									</div>
-									Главная
-								</>
-							) : (
-								<>
-									<div className={styles["icon_padding"]}>
-										<HomeIcon type={"none"} />
-									</div>
-									Главная
-								</>
-							)
-						}
+						<div className={styles["icon_padding"]}>
+							<HomeIcon type={"none"} />
+						</div>
+						Главная
 					</CustomNavLink>
 				</li>
 				<li className="text text_type_main-default">
 					<CustomNavLink to="/login" exact={true}>
-						{({ isActive }) =>
-							isActive ? (
-								<>
-									<div className={styles["icon_padding"]}>
-										<LoginIcon type={"none"} />
-									</div>
-									Войти
-								</>
-							) : (
-								<>
-									<div className={styles["icon_padding"]}>
-										<LoginIcon type={"none"} />
-									</div>
-									Войти
-								</>
-							)
-						}
+						<div className={styles["icon_padding"]}>
+							<LoginIcon type={"none"} />
+						</div>
+						Войти
 					</CustomNavLink>
 				</li>
 			</ul>
