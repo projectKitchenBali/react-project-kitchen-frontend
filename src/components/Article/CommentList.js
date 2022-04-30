@@ -1,4 +1,4 @@
-import Comment from "./Comment";
+import CommentBox from "../comment/comment-box";
 import React from "react";
 
 const CommentList = (props) => {
@@ -6,7 +6,7 @@ const CommentList = (props) => {
 		<div>
 			{props.comments.map((comment) => {
 				return (
-					<Comment
+					<CommentBox
 						comment={comment}
 						currentUser={props.currentUser}
 						slug={props.slug}
