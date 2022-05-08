@@ -150,9 +150,9 @@ function Navbar({
 					{appName}
 				</a>
 				{currentUser ? (
-					<LoggedOutView />
-				) : (
 					<LoggedInView currentUser={currentUser} />
+				) : (
+					<LoggedOutView />
 				)}
 			</nav>
 		</div>
