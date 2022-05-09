@@ -1,9 +1,11 @@
-import styles from "./button.module.css";
+import { ReactChild } from "react";
+
 import EditIcon from "../../assets/icons/edit-icon";
 import FollowIcon from "../../assets/icons/follow-icon";
 import UnfollowIcon from "../../assets/icons/unfollow-icon";
 import TrashIcon from "../../assets/icons/trash-icon";
-import { ReactChild } from "react";
+
+import styles from "./button.module.css";
 
 interface IButton {
 	children: ReactChild;
