@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 //TODO при переходе на react router v6 от строчки выше можно будет избиться
-import React from "react";
 import { Link, Route } from "react-router-dom";
 
 import {
@@ -17,6 +16,11 @@ interface IUser {
 	email: string;
 	token: string;
 	username: string;
+}
+
+interface INavbar {
+	appName: string;
+	currentUser: IUser;
 }
 
 // TODO при переходе на react router v6 от этого можно будет избавиться
@@ -131,15 +135,7 @@ const LoggedOutView = () => {
 	);
 };
 
-function Navbar({
-	appName,
-	currentUser,
-}: {
-	appName: string;
-	currentUser: IUser;
-}) {
-	console.log(`CURRENT-USER:`);
-	console.log(currentUser);
+export function Navbar({ appName, currentUser }: INavbar) {
 	return (
 		<div className={styles["navbar_container"]}>
 			<nav className={styles["navbar"]}>
@@ -158,5 +154,3 @@ function Navbar({
 		</div>
 	);
 }
-
-export default Navbar;
