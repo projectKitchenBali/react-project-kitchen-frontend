@@ -53,10 +53,6 @@ class App extends React.Component {
 		if (this.props.appLoaded) {
 			return (
 				<div>
-					<Navbar
-						appName={this.props.appName}
-						currentUser={this.props.currentUser}
-					/>
 					<Header
 						appName={this.props.appName}
 						currentUser={this.props.currentUser}
