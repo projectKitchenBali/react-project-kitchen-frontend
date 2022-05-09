@@ -44,10 +44,14 @@
 		"build": "react-scripts build",
 		"test": "cross-env PORT=4100 react-scripts test",
 		"eject": "react-scripts eject",
-		"lint": "eslint ./src",
-		"lint:fix": "eslint ./src --fix",
-		"format": "prettier --write src/**/*.{js,jsx,ts,tsx} --config ./.prettierrc",
-		"stylelint": "stylelint src/**/*.css"
+		"eslint": "eslint ./src",
+		"eslint:fix": "eslint ./src --fix",
+		"prettier": "prettier --check src/**/*.{js,jsx,ts,tsx} --config ./.prettierrc",
+		"prettier:fix": "prettier --write src/**/*.{js,jsx,ts,tsx} --config ./.prettierrc",
+		"stylelint": "stylelint src/**/*.css",
+		"stylelint:fix": "stylelint src/**/*.css --fix",
+		"format:check": "eslint ./src && prettier --check src/**/*.{js,jsx,ts,tsx} --config ./.prettierrc && stylelint src/**/*.css",
+		"format:fix": "eslint ./src --fix && prettier --write src/**/*.{js,jsx,ts,tsx} --config ./.prettierrc && stylelint src/**/*.css --fix"
 	},
 	"browserslist": {
 		"production": [
