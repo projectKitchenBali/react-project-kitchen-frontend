@@ -75,8 +75,8 @@ const CustomNavLink = ({
 
 const LoggedInView = ({ currentUser }: { currentUser: IUser }) => {
 	return (
-		<ul>
-			<li className="text text_type_main-default">
+		<ul className="text text_type_main-default">
+			<li>
 				<CustomNavLink to="/" exact={true}>
 					<div className={styles["icon_padding"]}>
 						<HomeIcon type={"inherit"} />
@@ -84,7 +84,7 @@ const LoggedInView = ({ currentUser }: { currentUser: IUser }) => {
 					Главная
 				</CustomNavLink>
 			</li>
-			<li className="text text_type_main-default">
+			<li>
 				<CustomNavLink to="/editor" exact={true}>
 					<div className={styles["icon_padding"]}>
 						<EditIcon type={"inherit"} />
@@ -92,7 +92,7 @@ const LoggedInView = ({ currentUser }: { currentUser: IUser }) => {
 					Новая запись
 				</CustomNavLink>
 			</li>
-			<li className="text text_type_main-default">
+			<li>
 				<CustomNavLink to="/settings" exact={true}>
 					<div className={styles["icon_padding"]}>
 						<SettingsIcon type={"inherit"} />
@@ -100,7 +100,7 @@ const LoggedInView = ({ currentUser }: { currentUser: IUser }) => {
 					Настройки
 				</CustomNavLink>
 			</li>
-			<li className="text text_type_main-default">
+			<li>
 				<CustomNavLink to={`/@${currentUser.username}`}>
 					<div className={styles["icon_padding"]}>
 						<AvatarIcon />
@@ -114,8 +114,8 @@ const LoggedInView = ({ currentUser }: { currentUser: IUser }) => {
 
 const LoggedOutView = () => {
 	return (
-		<ul>
-			<li className="text text_type_main-default">
+		<ul className="text text_type_main-default">
+			<li>
 				<CustomNavLink to="/" exact={true}>
 					<div className={styles["icon_padding"]}>
 						<HomeIcon type={"inherit"} />
@@ -123,7 +123,7 @@ const LoggedOutView = () => {
 					Главная
 				</CustomNavLink>
 			</li>
-			<li className="text text_type_main-default">
+			<li>
 				<CustomNavLink to="/login" exact={true}>
 					<div className={styles["icon_padding"]}>
 						<LoginIcon type={"inherit"} />
