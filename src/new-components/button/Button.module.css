@@ -13,9 +13,6 @@
 	height: 40px;
 	padding: 8px 16px;
 	color: #f2f2f3;
-	font-size: 16px;
-	font-family: "JetBrains Mono", sans-serif;
-	line-height: 24px;
 	background-color: #4c4cff;
 	border: 0;
 	border-radius: 20px;
@@ -26,13 +23,11 @@
 	align-content: center;
 	align-items: center;
 	justify-content: center;
+	float: right;
 	width: fit-content;
 	height: 40px;
 	padding: 8px 16px;
 	color: #8585ad;
-	font-size: 16px;
-	font-family: "JetBrains Mono", sans-serif;
-	line-height: 24px;
 	background-color: #3a3a55;
 	border: 0;
 	border-radius: 20px;
@@ -64,11 +59,9 @@
 
 .read_more {
 	width: fit-content;
-	height: 24px;
 	color: #4c4cff;
-	font-size: 16px;
-	font-family: "JetBrains Mono", sans-serif;
-	line-height: 24px;
+	background-color: #fff;
+	border: 0;
 	cursor: pointer;
 }
 
@@ -76,9 +69,19 @@
 	width: fit-content;
 	height: 40px;
 	color: #8585ad;
-	font-size: 16px;
-	font-family: "JetBrains Mono", sans-serif;
-	line-height: 24px;
+	background-color: #fff;
+	border: 0;
+	cursor: pointer;
+}
+
+.read_more:focus {
+	width: fit-content;
+	height: 24px;
+	color: #4c4cff;
+	text-decoration: underline;
+	background-color: #fff;
+	border: 0;
+	outline: 0;
 	cursor: pointer;
 }
 
@@ -87,9 +90,5 @@
 }
 
 .read_more:active {
-	text-decoration: underline;
-}
-
-.read_more:focus {
 	text-decoration: underline;
 }

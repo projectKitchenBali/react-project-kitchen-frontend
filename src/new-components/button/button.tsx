@@ -1,18 +1,26 @@
-import styles from "./Button.module.css";
+import styles from "./button.module.css";
 import EditIcon from "../../assets/icons/edit-icon";
 import FollowIcon from "../../assets/icons/follow-icon";
 import UnfollowIcon from "../../assets/icons/unfollow-icon";
 import TrashIcon from "../../assets/icons/trash-icon";
-import React from "react";
+import { ReactChild } from "react";
 
-export default function ButtonWithIcon({
+interface IButton {
+	children: ReactChild;
+	onClick: () => void;
+	disabled?: boolean;
+	type: "button" | "submit" | "reset" | undefined;
+	iconType?: string;
+}
+
+export default function Button({
 	children,
 	onClick,
 	disabled = false,
 	type,
 	iconType = "",
-}) {
-	let icon = "";
+}: IButton) {
+	let icon: JSX.Element;
 	switch (iconType) {
 		case "edit": {
 			icon = <EditIcon />;
@@ -31,7 +39,7 @@ export default function ButtonWithIcon({
 			break;
 		}
 		default: {
-			icon = "";
+			icon = <></>;
 		}
 	}
 	const className = disabled
@@ -44,21 +52,21 @@ export default function ButtonWithIcon({
 		? styles.read_more__disabled
 		: styles.read_more;
 
-	if (type === "read-more") {
+	if (type === undefined) {
 		return (
-			<div
+			<button
 				className={readMoreClassName}
 				disabled={disabled}
 				onClick={onClick}
 				type={type}
 			>
-				{children ? children : "Read more"}
-			</div>
+				{children}
+			</button>
 		);
 	}
 	return (
 		<button
-			className={className}
+			className={`${className} .text_type_main-default`}
 			disabled={disabled}
 			onClick={onClick}
 			type={type}
