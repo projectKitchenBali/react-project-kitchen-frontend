@@ -55,7 +55,7 @@ export default function Button({
 	if (type === undefined) {
 		return (
 			<button
-				className={readMoreClassName}
+				className={`${readMoreClassName} text_type_main-default`}
 				disabled={disabled}
 				onClick={onClick}
 				type={type}
@@ -66,7 +66,7 @@ export default function Button({
 	}
 	return (
 		<button
-			className={`${className} .text_type_main-default`}
+			className={`${className} text_type_main-default`}
 			disabled={disabled}
 			onClick={onClick}
 			type={type}
