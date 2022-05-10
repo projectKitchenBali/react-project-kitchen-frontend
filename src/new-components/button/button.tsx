@@ -9,9 +9,9 @@ import styles from "./button.module.css";
 
 interface IButton {
 	children: ReactChild;
-	onClick?: () => void;
+	onClick: () => void;
 	disabled?: boolean;
-	type?: "button" | "submit" | "reset" | undefined;
+	type: "button" | "submit" | "reset" | undefined;
 	iconType?: string;
 }
 
