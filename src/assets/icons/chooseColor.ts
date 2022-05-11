@@ -1,4 +1,4 @@
-const chooseColor = (type) => {
+const chooseColor = (type: string) => {
 	switch (type) {
 		case "primary":
 			return "#f2f2f3ff";
