@@ -9,6 +9,7 @@ import {
 	PROFILE_PAGE_LOADED,
 	PROFILE_PAGE_UNLOADED,
 } from "../constants/actionTypes";
+import { Banner } from "../new-components/banner/banner";
 
 const EditProfileSettings = (props) => {
 	if (props.isUser) {
@@ -125,7 +126,14 @@ class Profile extends React.Component {
 
 		return (
 			<div className="profile-page">
-				<div className="user-info">
+				<Banner
+					type="profile"
+					isUser={isUser}
+					user={this.props.profile}
+					onFollow={this.props.onFollow}
+					onUnfollow={this.props.onUnfollow}
+				/>
+				{/* <div className="user-info">
 					<div className="container">
 						<div className="row">
 							<div className="col-xs-12 col-md-10 offset-md-1">
@@ -147,7 +155,7 @@ class Profile extends React.Component {
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> */}
 
 				<div className="container">
 					<div className="row">
