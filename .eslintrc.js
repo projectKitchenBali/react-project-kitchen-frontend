@@ -20,6 +20,7 @@ module.exports = {
 	},
 	plugins: ["react", "@typescript-eslint"],
 	rules: {
+		"no-console": "warn",
 		"react/react-in-jsx-scope": "off",
 		"react/prop-types": "off",
 		//Правило для того что убрать ошибку на устаревшие компоненты в новой версии реакта

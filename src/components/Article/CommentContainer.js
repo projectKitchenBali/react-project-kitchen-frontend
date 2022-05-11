@@ -1,5 +1,5 @@
 import CommentInput from "./CommentInput";
-import CommentList from "./CommentList";
+import CommentList from "../../new-components/comment-list/comment-list";
 import { Link } from "react-router-dom";
 import React from "react";
 
