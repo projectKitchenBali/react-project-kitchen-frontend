@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { AnyAction, Dispatch } from "redux";
+
 import {
 	ARTICLE_FAVORITED,
 	ARTICLE_UNFAVORITED,
 } from "../../constants/actionTypes";
 import agent from "../../agent";
-import { AnyAction, Dispatch } from "redux";
-
-import AvatarIcon from "../../assets/icons/avatar-icon";
-import LikeFilledIcon from "../../assets/icons/like-filled-icon";
-import styles from "./article-preview.module.css";
+import { AvatarIcon, LikeFilledIcon, LikeIcon } from "../../assets/icons";
 import Button from "../button/button";
+
+import styles from "./article-preview.module.css";
 
 // type TActionsFavorite = "ARTICLE_FAVORITED" | "ARTICLE_UNFAVORITED";
 
@@ -119,11 +119,11 @@ const ArticlePreview: React.FC<IArticlePreviewProps> = ({
 						} text_type_main-default`}
 					>
 						{article.favoritesCount}
-						<LikeFilledIcon
-							type={article.favorited ? "error" : "primary"}
-							width={20}
-							height={20}
-						/>
+						{article.favorited ? (
+							<LikeFilledIcon type="error" width={20} height={20} />
+						) : (
+							<LikeIcon type="primary" width={20} height={20} />
+						)}
 					</div>
 				</div>
 
