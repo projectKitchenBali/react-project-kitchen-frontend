@@ -54,8 +54,9 @@
 
 .read_more {
 	width: fit-content;
+	padding: 0;
 	color: #4c4cff;
-	background-color: #fff;
+	background-color: transparent;
 	border: 0;
 	cursor: pointer;
 }
@@ -63,8 +64,9 @@
 .read_more__disabled {
 	width: fit-content;
 	height: 40px;
+	padding: 0;
 	color: #8585ad;
-	background-color: #fff;
+	background-color: transparent;
 	border: 0;
 	cursor: pointer;
 }
@@ -72,9 +74,10 @@
 .read_more:focus {
 	width: fit-content;
 	height: 24px;
+	padding: 0;
 	color: #4c4cff;
 	text-decoration: underline;
-	background-color: #fff;
+	background-color: transparent;
 	border: 0;
 	outline: 0;
 	cursor: pointer;
