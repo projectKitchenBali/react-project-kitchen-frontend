@@ -1,4 +1,3 @@
-import ArticleMeta from "./ArticleMeta";
 import CommentContainer from "./CommentContainer";
 import React from "react";
 import agent from "../../agent";
@@ -8,6 +7,7 @@ import {
 	ARTICLE_PAGE_LOADED,
 	ARTICLE_PAGE_UNLOADED,
 } from "../../constants/actionTypes";
+import { Banner } from "../../new-components/banner/banner";
 
 const mapStateToProps = (state) => ({
 	...state.article,
@@ -44,13 +44,14 @@ class Article extends React.Component {
 		const canModify =
 			this.props.currentUser &&
 			this.props.currentUser.username === this.props.article.author.username;
+
 		return (
 			<div className="article-page">
-				{/* <div className="banner">
-					<div className="container">
-						<ArticleMeta article={this.props.article} canModify={canModify} />
-					</div>
-				</div> */}
+				<Banner
+					type="article"
+					article={this.props.article}
+					isUser={canModify}
+				/>
 
 				<div className="container page">
 					<div className="row article-content">

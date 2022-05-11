@@ -1,5 +1,4 @@
 import agent from "../agent";
-import Header from "./Header";
 import React from "react";
 import { connect } from "react-redux";
 import { APP_LOAD, REDIRECT } from "../constants/actionTypes";
@@ -15,7 +14,6 @@ import Settings from "../components/Settings";
 import { store } from "../store";
 import { push } from "react-router-redux";
 import { Navbar } from "../new-components/navbar/navbar";
-import { Banner } from "../new-components/banner/banner";
 
 const mapStateToProps = (state) => {
 	return {
