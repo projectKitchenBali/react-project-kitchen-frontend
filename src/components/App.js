@@ -14,7 +14,6 @@ import Register from "../components/Register";
 import Settings from "../components/Settings";
 import { store } from "../store";
 import { push } from "react-router-redux";
-import Navbar from "../new-components/navbar/navbar";
 
 const mapStateToProps = (state) => {
 	return {
