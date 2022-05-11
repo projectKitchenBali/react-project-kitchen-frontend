@@ -139,17 +139,19 @@ export function Navbar({ appName, currentUser }: INavbar) {
 	return (
 		<div className={styles["navbar_container"]}>
 			<nav className={styles["navbar"]}>
-				<a
-					href="/"
-					className={`${styles["navbar_shadow"]} text text_type_main-headline`}
-				>
-					{appName}
-				</a>
-				{currentUser ? (
-					<LoggedInView currentUser={currentUser} />
-				) : (
-					<LoggedOutView />
-				)}
+				<div className={styles["navbar_inner"]}>
+					<a
+						href="/"
+						className={`${styles["navbar_shadow"]} text text_type_main-headline`}
+					>
+						{appName}
+					</a>
+					{currentUser ? (
+						<LoggedInView currentUser={currentUser} />
+					) : (
+						<LoggedOutView />
+					)}
+				</div>
 			</nav>
 		</div>
 	);
