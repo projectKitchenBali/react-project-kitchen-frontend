@@ -103,6 +103,7 @@ const LoggedInView = ({ currentUser }: { currentUser: IUser }) => {
 			<li>
 				<CustomNavLink to={`/@${currentUser.username}`}>
 					<div className={styles["icon_padding"]}>
+						{/* TODO заменить компонент AvatarIcon на img и получить аватар из объекта юзера */}
 						<AvatarIcon />
 					</div>
 					{currentUser.username}
