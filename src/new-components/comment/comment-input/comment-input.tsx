@@ -1,6 +1,6 @@
 import React, { FC, SyntheticEvent, useState } from "react";
-import agent from "../../agent";
-import { ADD_COMMENT } from "../../constants/actionTypes";
+import agent from "../../../agent";
+import { ADD_COMMENT } from "../../../constants/actionTypes";
 import { IUser } from "../comment-types";
 import { connect } from "react-redux";
 

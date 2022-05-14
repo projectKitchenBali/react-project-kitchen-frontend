@@ -1,9 +1,9 @@
 import CommentInput from "../comment-input/comment-input";
-import CommentList from "../../new-components/comment-list/comment-list";
+import CommentList from "../comment-list/comment-list";
 import { Link } from "react-router-dom";
 import React, { FC } from "react";
 import { IComment, IUser } from "../comment-types";
-import ListErrors from "../../components/ListErrors";
+import ListErrors from "../../../components/ListErrors";
 
 type CommentListProps = {
 	comments: IComment[];
