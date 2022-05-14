@@ -56,7 +56,6 @@ function FollowUserButton({
 export const ProfileBanner: React.FC<Omit<TProfileBanner, "type">> = ({
 	isUser,
 	user,
-	profile,
 	onFollow,
 	onUnfollow,
 }) => {
@@ -65,7 +64,7 @@ export const ProfileBanner: React.FC<Omit<TProfileBanner, "type">> = ({
 			<div className={styles["banner_profile_inner"]}>
 				<img
 					className={styles["banner_profile_image"]}
-					src={profile.image}
+					src={user.image}
 					alt={user.image}
 				/>
 				<h3
