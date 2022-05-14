@@ -1,4 +1,4 @@
-import ArticlePreview from "./ArticlePreview";
+import ArticlePreview from "../new-components/article-preview/article-preview";
 import ListPagination from "./ListPagination";
 import React from "react";
 
