@@ -19,7 +19,12 @@ const options: TOptions = {
 	day: "numeric",
 };
 
-export type TArticleActions = {
+type TUserMeta = {
+	username: string;
+	createdAt: Date;
+};
+
+type TArticleActions = {
 	actionsType: "article";
 	canModify: boolean;
 	article: TArticle;
@@ -27,43 +32,51 @@ export type TArticleActions = {
 
 type TUserMetaWithActions = TArticleActions;
 
+const UserMeta: React.FC<TUserMeta> = ({ username, createdAt }) => {
+	return (
+		<>
+			<Link className={styles["avatar"]} to={`/@${username}`}>
+				<AvatarIcon width={40} height={40} />
+			</Link>
+
+			<div className={styles["info"]}>
+				<Link className={styles["author"]} to={`/@${username}`}>
+					{username}
+				</Link>
+				<span className={`${styles["date"]} text_type_main-caption`}>
+					{new Date(createdAt)
+						.toLocaleDateString("ru-RU", options)
+						.replace(/\s*г\./, "")}
+				</span>
+			</div>
+		</>
+	);
+};
+
 export const UserMetaWithActions: React.FC<TUserMetaWithActions> = (props) => {
 	let content;
 	switch (props.actionsType) {
 		case "article":
 			content = (
-				<div className={`${styles["user-meta"]} text_type_main-default`}>
-					<Link
-						className={styles["avatar"]}
-						to={`/@${props.article.author.username}`}
-					>
-						<AvatarIcon width={40} height={40} />
-					</Link>
-
-					<div className={styles["info"]}>
-						<Link
-							className={styles["author"]}
-							to={`/@${props.article.author.username}`}
-						>
-							{props.article.author.username}
-						</Link>
-						<span className={`${styles["date"]} text_type_main-caption`}>
-							{new Date(props.article.createdAt)
-								.toLocaleDateString("ru-RU", options)
-								.replace(/\s*г\./, "")}
-						</span>
-					</div>
+				<>
+					<UserMeta
+						username={props.article.author.username}
+						createdAt={props.article.createdAt}
+					/>
 					<div className={styles["actions"]}>
 						<ArticleActions
 							canModify={props.canModify}
 							article={props.article}
 						/>
 					</div>
-				</div>
+				</>
 			);
-
 			break;
 	}
 
-	return <>{content}</>;
+	return (
+		<div className={`${styles["user-meta"]} text_type_main-default`}>
+			{content}
+		</div>
+	);
 };
