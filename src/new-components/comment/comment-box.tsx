@@ -1,12 +1,11 @@
 import React, { FunctionComponent } from "react";
 import DeleteButton from "../../components/Article/DeleteButton";
 import { Link } from "react-router-dom";
-import { Comment, User } from "../../types";
 import styles from "./comment-box.module.css";
 
 type CommentProps = {
-	comment: Comment;
-	currentUser: User;
+	comment: TComment;
+	currentUser: TUser;
 	slug: string;
 };
 export const CommentBox: FunctionComponent<CommentProps> = ({
