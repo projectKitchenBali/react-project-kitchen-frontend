@@ -16,6 +16,7 @@ interface IUser {
 	email: string;
 	token: string;
 	username: string;
+	image: string;
 }
 
 interface INavbar {
@@ -103,8 +104,11 @@ const LoggedInView = ({ currentUser }: { currentUser: IUser }) => {
 			<li>
 				<CustomNavLink to={`/@${currentUser.username}`}>
 					<div className={styles["icon_padding"]}>
-						{/* TODO заменить компонент AvatarIcon на img и получить аватар из объекта юзера */}
-						<AvatarIcon />
+						<img
+							className={styles["avatar_image"]}
+							src={currentUser.image}
+							alt={currentUser.username}
+						/>
 					</div>
 					{currentUser.username}
 				</CustomNavLink>
