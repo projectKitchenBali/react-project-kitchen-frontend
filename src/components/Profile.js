@@ -85,6 +85,7 @@ class Profile extends React.Component {
 				<Banner
 					type="profile"
 					isUser={isUser}
+					profile={profile}
 					user={this.props.profile}
 					onFollow={this.props.onFollow}
 					onUnfollow={this.props.onUnfollow}

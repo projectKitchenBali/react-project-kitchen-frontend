@@ -57,14 +57,18 @@ function FollowUserButton({
 export const ProfileBanner: React.FC<Omit<TProfileBanner, "type">> = ({
 	isUser,
 	user,
+	profile,
 	onFollow,
 	onUnfollow,
 }) => {
 	return (
 		<div className={styles["banner_profile"]}>
 			<div className={styles["banner_profile_inner"]}>
-				{/* TODO заменить компонент AvatarIcon на img и получить аватар из объекта юзера */}
-				<AvatarIcon width={120} height={120} />
+				<img
+					className={styles["banner_profile_image"]}
+					src={profile.image}
+					alt={user.image}
+				/>
 				<h3
 					className={`${styles["banner_profile__username"]} text text_type_main-headline`}
 				>

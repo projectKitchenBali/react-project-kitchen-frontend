@@ -18,6 +18,7 @@ export type TProfileBanner = {
 	onFollow: () => void;
 	onUnfollow: () => void;
 	isUser: boolean;
+	profile: TProfile;
 	user: TUser;
 };
 
@@ -41,6 +42,7 @@ export const Banner: React.FC<TBanner> = (props) => {
 			content = (
 				<ProfileBanner
 					isUser={props.isUser}
+					profile={props.profile}
 					user={props.user}
 					onFollow={props.onFollow}
 					onUnfollow={props.onUnfollow}

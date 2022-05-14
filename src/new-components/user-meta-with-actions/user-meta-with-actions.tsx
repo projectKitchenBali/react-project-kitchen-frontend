@@ -22,6 +22,7 @@ const options: TOptions = {
 type TUserMeta = {
 	username: string;
 	createdAt: Date;
+	imageUrl: string;
 };
 
 type TArticleActions = {
@@ -32,11 +33,11 @@ type TArticleActions = {
 
 type TUserMetaWithActions = TArticleActions;
 
-const UserMeta: React.FC<TUserMeta> = ({ username, createdAt }) => {
+const UserMeta: React.FC<TUserMeta> = ({ username, createdAt, imageUrl }) => {
 	return (
 		<>
 			<Link className={styles["avatar"]} to={`/@${username}`}>
-				<AvatarIcon width={40} height={40} />
+				<img className={styles["avatar_image"]} src={imageUrl} alt={username} />
 			</Link>
 
 			<div className={styles["info"]}>
@@ -62,6 +63,7 @@ export const UserMetaWithActions: React.FC<TUserMetaWithActions> = (props) => {
 					<UserMeta
 						username={props.article.author.username}
 						createdAt={props.article.createdAt}
+						imageUrl={props.article.author.image}
 					/>
 					<div className={styles["actions"]}>
 						<ArticleActions
