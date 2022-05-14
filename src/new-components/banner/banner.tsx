@@ -23,7 +23,7 @@ export type TProfileBanner = {
 
 export type TArticleBanner = {
 	type: "article";
-	isUser: boolean;
+	canModify: boolean;
 	article: TArticle;
 };
 
@@ -33,7 +33,9 @@ export const Banner: React.FC<TBanner> = (props) => {
 	let content;
 	switch (props.type) {
 		case "article":
-			content = <ArticleBanner isUser={props.isUser} article={props.article} />;
+			content = (
+				<ArticleBanner canModify={props.canModify} article={props.article} />
+			);
 			break;
 		case "profile":
 			content = (

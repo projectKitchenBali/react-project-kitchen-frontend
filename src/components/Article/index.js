@@ -50,7 +50,7 @@ class Article extends React.Component {
 				<Banner
 					type="article"
 					article={this.props.article}
-					isUser={canModify}
+					canModify={canModify}
 				/>
 
 				<div className="container page">

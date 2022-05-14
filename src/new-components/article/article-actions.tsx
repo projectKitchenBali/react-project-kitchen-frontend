@@ -25,13 +25,12 @@ const ArticleActions: React.FC<IArticleMetaProps> = ({
 	article,
 	onClickDelete,
 }) => {
-	let content = null;
 	const del = () => {
 		onClickDelete(agent.Articles.del(article.slug));
 	};
 
 	if (canModify) {
-		content = (
+		return (
 			<>
 				<Link to={`/editor/${article.slug}`}>
 					<Button type="button" iconType="edit">
@@ -45,7 +44,7 @@ const ArticleActions: React.FC<IArticleMetaProps> = ({
 		);
 	}
 
-	return <>{content}</>;
+	return null;
 };
 
 export default connect(() => ({}), mapDispatchToProps)(ArticleActions);

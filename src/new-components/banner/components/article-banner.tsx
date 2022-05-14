@@ -1,18 +1,22 @@
 import React from "react";
 
-import { ArticleMeta } from "../../article/article-meta";
+import { UserMetaWithActions } from "../../user-meta-with-actions/user-meta-with-actions";
 import { TArticleBanner } from "../banner";
 
 import styles from "../banner.module.css";
 
 export const ArticleBanner: React.FC<Omit<TArticleBanner, "type">> = ({
-	isUser,
+	canModify,
 	article,
 }) => {
 	return (
 		<div className={`${styles["banner_article"]}`}>
 			<div className={styles["banner_article_inner"]}>
-				<ArticleMeta canModify={isUser} article={article} />
+				<UserMetaWithActions
+					actionsType="article"
+					canModify={canModify}
+					article={article}
+				/>
 			</div>
 		</div>
 	);
