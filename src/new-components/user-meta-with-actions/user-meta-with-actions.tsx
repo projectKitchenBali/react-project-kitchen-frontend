@@ -2,7 +2,6 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 import ArticleActions from "../article/article-actions";
-import { AvatarIcon } from "../../assets/icons";
 
 import styles from "./user-meta-with-actions.module.css";
 

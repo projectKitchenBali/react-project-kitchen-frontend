@@ -7,7 +7,6 @@ import {
 	EditIcon,
 	SettingsIcon,
 	LoginIcon,
-	AvatarIcon,
 } from "../../assets/icons";
 
 import styles from "./navbar.module.css";

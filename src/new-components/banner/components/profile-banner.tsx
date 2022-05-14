@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Button from "../../button/button";
-import { AvatarIcon } from "../../../assets/icons";
 import { TProfileBanner } from "../banner";
 
 import styles from "../banner.module.css";
