@@ -1,15 +1,14 @@
 import React, { FunctionComponent } from "react";
-import DeleteButton from "../Article/DeleteButton";
+import DeleteButton from "../../components/Article/DeleteButton";
 import { Link } from "react-router-dom";
-import { Comment, User } from "../../types";
+import { IComment, IUser } from "../comment-types";
 import styles from "./comment-box.module.css";
 
 type CommentProps = {
-	comment: Comment;
-	currentUser: User;
+	comment: IComment;
+	currentUser: IUser;
 	slug: string;
 };
-
 export const CommentBox: FunctionComponent<CommentProps> = ({
 	comment,
 	currentUser,

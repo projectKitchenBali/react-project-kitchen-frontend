@@ -1,12 +1,12 @@
-export type User = {
+export interface IUser {
 	id: string;
 	username: string;
 	image: string;
-};
+}
 
-export type Comment = {
+export interface IComment {
 	id: string;
 	author: User;
 	body: string;
 	createdAt: Date;
-};
+}

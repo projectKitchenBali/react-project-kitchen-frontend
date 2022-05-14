@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react";
-import CommentBox from "../comment/comment-box";
-import { Comment, User } from "../../types";
+import CommentBox from "../comment-box/comment-box";
+import { IComment, IUser } from "../comment-types";
 
 type CommentListProps = {
-	comments: Comment[];
-	currentUser: User;
+	comments: IComment[];
+	currentUser: IUser;
 	slug: string;
 };
 
