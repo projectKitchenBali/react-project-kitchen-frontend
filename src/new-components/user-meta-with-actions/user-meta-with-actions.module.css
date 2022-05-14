@@ -1,0 +1,40 @@
+/* author */
+
+.user-meta {
+	display: flex;
+	gap: 8px;
+	color: white;
+	text-align: start;
+}
+
+.avatar {
+	display: flex;
+	vertical-align: middle;
+}
+
+.user-meta .info .author {
+	display: block;
+}
+
+/* date */
+
+.user-meta .info .date {
+	display: block;
+	color: #8585ad;
+}
+
+.actions {
+	display: flex;
+	gap: 9px;
+	align-items: center;
+	justify-self: flex-end;
+	margin-left: auto;
+}
+
+.avatar_image {
+	width: 40px;
+	height: 40px;
+	object-fit: cover;
+	border: 2px solid #1c1c21;
+	border-radius: 50%;
+}
