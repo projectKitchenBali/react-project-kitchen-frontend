@@ -18,12 +18,6 @@ type TUser = {
 	following: boolean;
 };
 
-type TProfile = {
-	following: boolean;
-	image: string;
-	username: string;
-};
-
 type TComment = {
 	id: string;
 	author: TUser;
