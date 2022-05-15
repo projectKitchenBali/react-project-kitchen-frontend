@@ -15,5 +15,36 @@ html {
 
 body {
   margin: 0;
-  background: inherit; // library.css это bootstrap ?
+
+  background: inherit; // library.css это что bootstrap ?
+  color: inherit;
+}
+
+/*
+ * Ссылки
+ */
+
+a {
+  color: $global-link-color;
+  text-decoration: $global-link-text-decoration;
+  cursor: pointer;
+}
+
+a:hover {
+  color: $global-link-hover-color;
+  text-decoration: $global-link-hover-text-decoration;
+}
+
+/*
+ * Заголовки
+ */
+
+h2 {
+  color: $global-color;
+
+  font-family: $heading-font-family;
+  font-weight: $heading-font-weight;
+
+  font-size: $heading-h2-font-size;
+  line-height: $heading-h2-line-height;
 }
