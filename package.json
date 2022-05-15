@@ -37,7 +37,6 @@
 		"redux": "^3.6.0",
 		"redux-devtools-extension": "^2.13.2",
 		"redux-logger": "^3.0.1",
-		"sass": "^1.51.0",
 		"superagent": "^3.8.2",
 		"superagent-promise": "^1.1.0",
 		"typescript": "^4.6.4"
