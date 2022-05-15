@@ -30,3 +30,15 @@ type TComment = {
 	body: string;
 	createdAt: Date;
 };
+
+/**
+ * Тип для формы входа и т.д.
+ */
+type AuthForm = {
+	email: string;
+	password: string;
+	inProgress: boolean;
+	errors: {
+		[error: string]: string
+	};
+};

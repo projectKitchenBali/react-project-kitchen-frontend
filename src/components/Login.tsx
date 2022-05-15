@@ -11,41 +11,35 @@ import {
 
 import EyeIcon from "../assets/icons/eye-icon";
 
-const Login = () => {
+const Login: React.FC = () => {
 
     const dispatch = useDispatch();
-    const state = useSelector(state => state.auth);
+    const state = useSelector<any, AuthForm>(state => state.auth);
 
-    const [passwordVisible, setPasswordVisible] = useState(false);
-    const passwordVisibleToggle = (event) => {
+    const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
+    const passwordVisibleToggle = (event: React.SyntheticEvent<HTMLAnchorElement>): void => {
         event.preventDefault();
         setPasswordVisible((state) => !state);
-    }
-
-    // @todo
-    /* email: "Dmitry123@ff.cc"
-    errors: Object { "email or password": "is invalid" }
-    inProgress: false
-    password: "Wb6aYuRn37tZDWL" */
-
-    const changeEmail = (ev) => {
-        dispatch({type: UPDATE_FIELD_AUTH, key: "email", value: ev.target.value})
     };
 
-    const changePassword = (ev) => {
-        dispatch({type: UPDATE_FIELD_AUTH, key: "password", value: ev.target.value});
-    }
+    const changeEmail = (event: React.SyntheticEvent<HTMLInputElement>) => {
+        dispatch({type: UPDATE_FIELD_AUTH, key: "email", value: event.currentTarget.value})
+    };
 
-    const submitForm = (email, password) => (ev) => {
-        ev.preventDefault();
+    const changePassword = (event: React.SyntheticEvent<HTMLInputElement>) => {
+        dispatch({type: UPDATE_FIELD_AUTH, key: "password", value: event.currentTarget.value});
+    };
+
+    const submitForm = (email: string, password: string) => (event: React.SyntheticEvent<HTMLFormElement>) => {
+        event.preventDefault();
         dispatch({type: LOGIN, payload: agent.Auth.login(email, password)});
     };
 
     const onUnload = () => {
         dispatch({type: LOGIN_PAGE_UNLOADED});
-    }
+    };
 
-    useEffect(() => onUnload, []); // unmount
+    useEffect((): () => void => onUnload, []); // unmount
 
     return (
         <div className="auth-page">
@@ -79,7 +73,8 @@ const Login = () => {
                                     </a>
                                     <input
                                         id="form-password" className="form-control form-control-lg"
-                                        type={passwordVisible ? 'text' : 'password'} placeholder="Пароль" value={state.password}
+                                        type={passwordVisible ? 'text' : 'password'} placeholder="Пароль"
+                                        value={state.password}
                                         onChange={changePassword}
                                     />
                                 </div>
@@ -92,9 +87,7 @@ const Login = () => {
                             >
                                 Войти
                             </button>
-
                         </form>
-
                     </div>
                 </div>
             </div>
