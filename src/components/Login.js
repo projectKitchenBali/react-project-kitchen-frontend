@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import ListErrors from "./ListErrors";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import agent from "../agent";
 import {useDispatch, useSelector} from "react-redux";
 import {
@@ -15,6 +15,12 @@ const Login = () => {
 
     const dispatch = useDispatch();
     const state = useSelector(state => state.auth);
+
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    const passwordVisibleToggle = (event) => {
+        event.preventDefault();
+        setPasswordVisible((state) => !state);
+    }
 
     // @todo
     /* email: "Dmitry123@ff.cc"
@@ -68,10 +74,12 @@ const Login = () => {
                             <div className="form-group">
                                 <label className="form-control-label" htmlFor="form-password">Пароль</label>
                                 <div className="form-controls">
-                                    <a href="#" className="form-control-icon"><EyeIcon/></a>
+                                    <a href="#" className="form-control-icon" onClick={passwordVisibleToggle}>
+                                        <EyeIcon/>
+                                    </a>
                                     <input
                                         id="form-password" className="form-control form-control-lg"
-                                        type="password" placeholder="Пароль" value={state.password}
+                                        type={passwordVisible ? 'text' : 'password'} placeholder="Пароль" value={state.password}
                                         onChange={changePassword}
                                     />
                                 </div>
