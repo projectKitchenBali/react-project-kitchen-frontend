@@ -1,0 +1,29 @@
+//
+// Типографика
+//
+
+$global-font-family: 'JetBrains Mono', sans-serif !default;
+$global-font-size: 16px !default;
+$global-font-weight: normal !default;
+$global-line-height: 1.5 !default; // 24px
+
+
+//
+// Цвета
+//
+$global-color: #F2F2F3 !default;
+$global-emphasis-color: #333 !default;
+$global-muted-color: #999 !default;
+
+$global-link-color: #1e87f0 !default;
+$global-link-hover-color: #0f6ecd !default;
+
+//
+// Фоны
+//
+
+$global-background: #131316 !default;
+$global-secondary-background: #1C1C21 !default;
+
+// @todo
+// $navbar-background: $global-secondary-background !default;
