@@ -1,8 +1,8 @@
 import {Link} from "react-router-dom";
 import ListErrors from "./ListErrors";
-import React from "react";
+import React, {useEffect} from "react";
 import agent from "../agent";
-import {connect} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {
     UPDATE_FIELD_AUTH,
     LOGIN,
@@ -11,87 +11,87 @@ import {
 
 import EyeIcon from "../assets/icons/eye-icon";
 
-const mapStateToProps = (state) => ({...state.auth});
+const Login = () => {
 
-const mapDispatchToProps = (dispatch) => ({
-    onChangeEmail: (value) =>
-        dispatch({type: UPDATE_FIELD_AUTH, key: "email", value}),
-    onChangePassword: (value) =>
-        dispatch({type: UPDATE_FIELD_AUTH, key: "password", value}),
-    onSubmit: (email, password) =>
-        dispatch({type: LOGIN, payload: agent.Auth.login(email, password)}),
-    onUnload: () => dispatch({type: LOGIN_PAGE_UNLOADED}),
-});
+    const dispatch = useDispatch();
+    const state = useSelector(state => state.auth);
 
-class Login extends React.Component {
-    constructor() {
-        super();
-        this.changeEmail = (ev) => this.props.onChangeEmail(ev.target.value);
-        this.changePassword = (ev) => this.props.onChangePassword(ev.target.value);
-        this.submitForm = (email, password) => (ev) => {
-            ev.preventDefault();
-            this.props.onSubmit(email, password);
-        };
+    // @todo
+    /* email: "Dmitry123@ff.cc"
+    errors: Object { "email or password": "is invalid" }
+    inProgress: false
+    password: "Wb6aYuRn37tZDWL" */
+
+    const changeEmail = (ev) => {
+        dispatch({type: UPDATE_FIELD_AUTH, key: "email", value: ev.target.value})
+    };
+
+    const changePassword = (ev) => {
+        dispatch({type: UPDATE_FIELD_AUTH, key: "password", value: ev.target.value});
     }
 
-    componentWillUnmount() {
-        this.props.onUnload();
+    const submitForm = (email, password) => (ev) => {
+        ev.preventDefault();
+        dispatch({type: LOGIN, payload: agent.Auth.login(email, password)});
+    };
+
+    const onUnload = () => {
+        dispatch({type: LOGIN_PAGE_UNLOADED});
     }
 
-    render() {
-        const email = this.props.email;
-        const password = this.props.password;
-        return (
-            <div className="auth-page">
-                <div className="container page">
-                    <div className="row">
-                        <div className="col-md-6 offset-md-3 col-xs-12">
-                            <h2 className="text-xs-center">Войти</h2>
-                            <p className="text-xs-center">
-                                <Link to="/register">Хотите создать аккаунт??</Link>
-                            </p>
+    useEffect(() => onUnload, []); // unmount
 
-                            <ListErrors errors={this.props.errors}/>
+    return (
+        <div className="auth-page">
+            <div className="container page">
+                <div className="row">
+                    <div className="col-md-6 offset-md-3 col-xs-12">
+                        <h2 className="text-xs-center">Войти</h2>
+                        <p className="text-xs-center">
+                            <Link to="/register">Хотите создать аккаунт??</Link>
+                        </p>
 
-                            <form onSubmit={this.submitForm(email, password)}>
+                        {<ListErrors errors={state.errors}/>}
 
-                                <div className="form-group">
-                                    <label className="form-control-label" htmlFor="form-email">E-mail</label>
-                                    <div className="form-controls">
-                                        <input
-                                            id="form-email" className="form-control form-control-lg"
-                                            type="email" placeholder="E-mail" value={email}
-                                            onChange={this.changeEmail}/>
-                                    </div>
+                        <form onSubmit={submitForm(state.email, state.password)}>
+
+                            <div className="form-group">
+                                <label className="form-control-label" htmlFor="form-email">E-mail</label>
+                                <div className="form-controls">
+                                    <input
+                                        id="form-email" className="form-control form-control-lg"
+                                        type="email" placeholder="E-mail" value={state.email}
+                                        onChange={changeEmail}/>
                                 </div>
+                            </div>
 
-                                <div className="form-group">
-                                    <label className="form-control-label" htmlFor="form-password">Пароль</label>
-                                    <div className="form-controls">
-                                        <a href="#" className="form-control-icon"><EyeIcon /></a>
-                                        <input
-                                            id="form-password" className="form-control form-control-lg"
-                                            type="password" placeholder="Пароль" value={password}
-                                            onChange={this.changePassword}
-                                        />
-                                    </div>
+                            <div className="form-group">
+                                <label className="form-control-label" htmlFor="form-password">Пароль</label>
+                                <div className="form-controls">
+                                    <a href="#" className="form-control-icon"><EyeIcon/></a>
+                                    <input
+                                        id="form-password" className="form-control form-control-lg"
+                                        type="password" placeholder="Пароль" value={state.password}
+                                        onChange={changePassword}
+                                    />
                                 </div>
+                            </div>
 
-                                <button
-                                    className="btn form-button pull-xs-right"
-                                    type="submit"
-                                    disabled={this.props.inProgress}
-                                >
-                                    Войти
-                                </button>
+                            <button
+                                className="btn form-button pull-xs-right"
+                                type="submit"
+                                disabled={state.inProgress}
+                            >
+                                Войти
+                            </button>
 
-                            </form>
-                        </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;
