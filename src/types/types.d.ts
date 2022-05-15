@@ -39,6 +39,6 @@ type AuthForm = {
 	password: string;
 	inProgress: boolean;
 	errors: {
-		[error: string]: string
+		[error: string]: string;
 	};
 };

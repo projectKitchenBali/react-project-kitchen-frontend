@@ -3,9 +3,9 @@ import { createLogger } from "redux-logger";
 import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 import { promiseMiddleware, localStorageMiddleware } from "./middleware";
 
-import { routerMiddleware } from 'connected-react-router'
-import { createBrowserHistory } from 'history'
-import createRootReducer from './reducer'
+import { routerMiddleware } from "connected-react-router";
+import { createBrowserHistory } from "history";
+import createRootReducer from "./reducer";
 
 export const history = createBrowserHistory();
 
@@ -30,4 +30,7 @@ const getMiddleware = () => {
 	}
 };
 
-export const store = createStore(createRootReducer(history), composeWithDevTools(getMiddleware()));
+export const store = createStore(
+	createRootReducer(history),
+	composeWithDevTools(getMiddleware())
+);

@@ -4,11 +4,11 @@ import React from "react";
 import { store, history } from "./store";
 
 import { Route, Switch } from "react-router-dom";
-import { ConnectedRouter } from 'connected-react-router'
+import { ConnectedRouter } from "connected-react-router";
 
 import App from "./components/App";
 
-import './styles/index.scss';
+import "./styles/index.scss";
 
 ReactDOM.render(
 	<Provider store={store}>
