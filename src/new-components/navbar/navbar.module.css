@@ -64,11 +64,6 @@
 	justify-content: center;
 }
 
-.navbar a:hover, .navbar a:focus {
-	color: #f2f2f3;
-	text-decoration: none;
-}
-
 .navbar a .icon_padding {
 	fill: inherit;
 	stroke: inherit;
