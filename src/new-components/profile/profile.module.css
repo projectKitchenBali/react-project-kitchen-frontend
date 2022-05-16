@@ -1,0 +1,75 @@
+ul,
+li {
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.container {
+	box-sizing: border-box;
+	max-width: 1140px;
+	margin: 0 auto;
+	padding: 0 15px 1px;
+	background: #131316;
+}
+
+.tabs-toggle {
+	display: flex;
+}
+
+.tabs-toggle,
+.content {
+	position: relative;
+	flex: 0 0 83.3333%;
+	max-width: 83.3333%;
+	min-height: 1px;
+	margin-left: 8.3333%;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.tabs {
+	float: left;
+	margin: 1.5rem 0 -1px;
+}
+
+.tab-active {
+	display: block;
+	padding: 16px 24px;
+	color: #f2f2f3;
+	box-shadow: inset 0 -2px 0 #4c4cff;
+	cursor: default;
+}
+
+.tab {
+	display: block;
+	padding: 16px 24px;
+	color: #8585ad;
+}
+
+.tab-active:hover {
+	color: #f2f2f3;
+	text-decoration: none;
+}
+
+.tab:hover {
+	color: #f2f2f3;
+	text-decoration: none;
+}
+
+@media screen and (max-width: 992px) {
+	.container {
+		max-width: 940px;
+	}
+}
+@media screen and (max-width: 768px) {
+	.container {
+		max-width: 720;
+	}
+}
+@media screen and (max-width: 576px) {
+	.container {
+		max-width: 544px;
+	}
+}
