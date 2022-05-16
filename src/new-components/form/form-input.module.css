@@ -1,0 +1,42 @@
+.group {
+	margin-bottom: 1rem;
+}
+
+.label {
+	display: inline-block;
+	margin-bottom: 0;
+	padding: 0.5rem 0.75rem;
+}
+
+.controls {
+	position: relative;
+}
+
+.control {
+	display: block;
+	width: 100%;
+	padding: 0.75rem 1.5rem;
+	color: #8585ad;
+	font-size: 1.25rem;
+	line-height: 1.25;
+	background: #2f2f37;
+	background-clip: padding-box;
+	border: 1px solid rgb(0 0 0 / 15%);
+	border-radius: 20px;
+}
+
+.icon {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1em;
+}
+
+.icon ~ .control {
+	padding-right: 2.5em !important;
+}

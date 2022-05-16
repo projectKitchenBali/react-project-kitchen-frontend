@@ -6,13 +6,13 @@ import { Route, Switch } from "react-router-dom";
 import Article from "../components/Article";
 import Editor from "../components/Editor";
 import Home from "../components/Home";
-import Login from "../components/Login";
+import Login from "./Login";
 import Profile from "../components/Profile";
 import ProfileFavorites from "../components/ProfileFavorites";
 import Register from "../components/Register";
 import Settings from "../components/Settings";
 import { store } from "../store";
-import { push } from "react-router-redux";
+import { push } from "connected-react-router";
 import { Navbar } from "../new-components/navbar/navbar";
 
 const mapStateToProps = (state) => {
