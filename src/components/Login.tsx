@@ -3,16 +3,12 @@ import ListErrors from "./ListErrors";
 import React, { useEffect, useState } from "react";
 import agent from "../agent";
 import { useDispatch, useSelector } from "react-redux";
-import {
-	UPDATE_FIELD_AUTH,
-	LOGIN,
-	LOGIN_PAGE_UNLOADED,
-} from "../constants/actionTypes";
+import { LOGIN, LOGIN_PAGE_UNLOADED, UPDATE_FIELD_AUTH } from "../constants/actionTypes";
 
 import EyeIcon from "../assets/icons/eye-icon";
-import FormButton from "../new-components/form/form-button";
 import FormInput from "../new-components/form/form-input";
 import cl from "./Login.module.css";
+import Button from "../new-components/button/button";
 
 const Login: React.FC = () => {
 	const dispatch = useDispatch();
@@ -84,7 +80,9 @@ const Login: React.FC = () => {
 							>
 								<EyeIcon />
 							</FormInput>
-							<FormButton className="pull-xs-right">Войти</FormButton>
+
+							<Button type={"submit"} disabled={state.inProgress}>Войти</Button>
+
 						</form>
 					</div>
 				</div>
