@@ -1,5 +1,5 @@
 import React from "react";
-import cl from "./form-input.module.css";
+import cl from "./input.module.css";
 
 interface FormInputProps {
 	value: string;
@@ -11,7 +11,7 @@ interface FormInputProps {
 	onClick?(e: React.MouseEvent<HTMLAnchorElement>): void;
 }
 
-const FormInput: React.FC<FormInputProps> = (props) => {
+const Input: React.FC<FormInputProps> = (props) => {
 	return (
 		<div className={cl.group}>
 			{props.label && <label className={cl.label}>{props.label}</label>}
@@ -35,4 +35,4 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 	);
 };
 
-export default FormInput;
+export default Input;
