@@ -1,15 +1,22 @@
 .card {
+	margin-bottom: 15px;
+	margin-top: 15px;
 	color: #8585ad;
 	font-weight: 400;
 	font-size: 16px;
 	font-style: normal;
 	line-height: 24px;
 	background-color: #1c1c21;
+	border: 0;
 	border-radius: 20px;
 }
 
+.cardBlock {
+	padding: 1.25rem;
+}
+
 .cardFooter {
-	height: 88px;
+	height: 50px;
 	padding-left: 20px;
 	color: #8585ad;
 	background-color: #1c1c21;

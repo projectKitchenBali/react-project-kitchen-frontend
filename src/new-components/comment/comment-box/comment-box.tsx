@@ -1,8 +1,6 @@
-import React, { FunctionComponent } from "react";
-import DeleteButton from "../../../components/Article/DeleteButton";
-import { Link } from "react-router-dom";
+import { FunctionComponent } from "react";
 import styles from "./comment-box.module.css";
-import AvatarIcon from "../../../assets/icons/avatar-icon";
+
 import { UserMetaWithActions } from "../../user-meta-with-actions/user-meta-with-actions";
 
 type CommentProps = {
@@ -17,9 +15,9 @@ export const CommentBox: FunctionComponent<CommentProps> = ({
 }) => {
 	const show = currentUser && currentUser.username === comment.author.username;
 	return (
-		<div className={`card ${styles.card}`}>
-			<div className="card-block">
-				<p className="card-text">{comment.body}</p>
+		<div className={`${styles.card}`}>
+			<div className={styles.cardBlock}>
+				<p className="text_type_main-default">{comment.body}</p>
 			</div>
 			<div className={`${styles.cardFooter}`}>
 				<UserMetaWithActions
