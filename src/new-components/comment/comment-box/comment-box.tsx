@@ -3,6 +3,7 @@ import DeleteButton from "../../../components/Article/DeleteButton";
 import { Link } from "react-router-dom";
 import styles from "./comment-box.module.css";
 import AvatarIcon from "../../../assets/icons/avatar-icon";
+import { TComment, TUser } from "../../../types/types";
 
 type CommentProps = {
 	comment: TComment;
@@ -15,7 +16,6 @@ export const CommentBox: FunctionComponent<CommentProps> = ({
 	slug,
 }) => {
 	const show = currentUser && currentUser.username === comment.author.username;
-	console.log(comment.author);
 	return (
 		<div className={`card ${styles.card}`}>
 			<div className="card-block">

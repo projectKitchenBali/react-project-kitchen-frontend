@@ -2,12 +2,12 @@ import CommentInput from "../comment-input/comment-input";
 import CommentList from "../comment-list/comment-list";
 import { Link } from "react-router-dom";
 import React, { FC } from "react";
-import { IComment, IUser } from "../comment-types";
+import { TComment, TUser } from "../../../types/types";
 import ListErrors from "../../../components/ListErrors";
 
 type CommentListProps = {
-	comments: IComment[];
-	currentUser: IUser;
+	comments: TComment[];
+	currentUser: TUser;
 	slug: string;
 	errors: Array<string>;
 };

@@ -1,4 +1,4 @@
-import CommentContainer from "./CommentContainer";
+import CommentContainer from "../../new-components/comment/comment-container/comment-container";
 import React from "react";
 import agent from "../../agent";
 import { connect } from "react-redux";

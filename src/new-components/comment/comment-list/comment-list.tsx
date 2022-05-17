@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
-import CommentBox from "../comment/comment-box";
+import { TComment, TUser } from "../../../types/types";
+import CommentBox from "../comment-box/comment-box";
 
 type CommentListProps = {
 	comments: TComment[];

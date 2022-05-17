@@ -1,4 +1,4 @@
-type TArticle = {
+export type TArticle = {
 	author: TUser;
 	slug: string;
 	title: string;

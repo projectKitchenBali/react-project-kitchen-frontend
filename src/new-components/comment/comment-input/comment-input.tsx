@@ -1,8 +1,8 @@
 import React, { FC, SyntheticEvent, useState } from "react";
 import agent from "../../../agent";
 import { ADD_COMMENT } from "../../../constants/actionTypes";
-import { IUser } from "../comment-types";
 import { connect } from "react-redux";
+import { TUser } from "../../../types/types";
 
 const mapDispatchToProps = (dispatch: any) => ({
 	onSubmit: (payload: string) => dispatch({ type: ADD_COMMENT, payload }),
@@ -10,7 +10,7 @@ const mapDispatchToProps = (dispatch: any) => ({
 
 const CommentInput: FC<{
 	slug: string;
-	currentUser: IUser;
+	currentUser: TUser;
 	onSubmit: (payload: string) => any;
 }> = ({ slug, currentUser, onSubmit }) => {
 	const [body, setBody] = useState<string>("");
