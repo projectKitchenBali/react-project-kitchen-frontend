@@ -2,7 +2,8 @@ import React, { FC, SyntheticEvent, useState } from "react";
 import agent from "../../../agent";
 import { ADD_COMMENT } from "../../../constants/actionTypes";
 import { connect } from "react-redux";
-
+import styles from "./comment-input.module.css";
+import TextArea from "../text-area/text-area";
 const mapDispatchToProps = (dispatch: any) => ({
 	onSubmit: (payload: string) => dispatch({ type: ADD_COMMENT, payload }),
 });
@@ -29,17 +30,17 @@ const CommentInput: FC<{
 	};
 
 	return (
-		<form className="card comment-form" onSubmit={createComment}>
-			<div className="card-block">
-				<textarea
-					className="form-control"
-					placeholder="Write a comment..."
+		<form className={`${styles.card}`} onSubmit={createComment}>
+			<div className={`${styles.cardBlock}`}>
+				<TextArea
+					className={styles.textArea}
+					placeholder="Комменты сюда..."
 					value={body}
 					onChange={onChange}
 					rows={3}
-				></textarea>
+				></TextArea>
 			</div>
-			<div className="card-footer">
+			<div className={`${styles.cardFooter}`}>
 				<img
 					src={currentUser.image}
 					className="comment-author-img"

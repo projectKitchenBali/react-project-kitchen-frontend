@@ -1,13 +1,13 @@
 import { FunctionComponent } from "react";
 import CommentBox from "../comment-box/comment-box";
 
-type CommentListProps = {
+interface ICommentListProps {
 	comments: TComment[];
 	currentUser: TUser;
 	slug: string;
-};
+}
 
-const CommentList: FunctionComponent<CommentListProps> = ({
+const CommentList: FunctionComponent<ICommentListProps> = ({
 	comments,
 	currentUser,
 	slug,
