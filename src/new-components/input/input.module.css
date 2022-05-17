@@ -1,11 +1,19 @@
 .group {
 	margin-bottom: 1rem;
+
+	/* @todo: Удалите когда сделаете типографику для html, body { } */
+	font-weight: 400;
+	font-size: 16px;
+	font-family: JetBrainsMono-Regular, sans-serif;
+	font-style: normal;
+	line-height: 24px;
 }
 
 .label {
 	display: inline-block;
 	margin-bottom: 0;
 	padding: 0.5rem 0.75rem;
+	color: #f2f2f3; /* @todo: Удалите хардкорный цвет, когда будет единая типографика */
 }
 
 .controls {
@@ -15,12 +23,10 @@
 .control {
 	display: block;
 	width: 100%;
-	padding: 0.75rem 1.5rem;
+	height: 40px;
+	padding: 8px 16px;
 	color: #8585ad;
-	font-size: 1.25rem;
-	line-height: 1.25;
 	background: #2f2f37;
-	background-clip: padding-box;
 	border: 1px solid rgb(0 0 0 / 15%);
 	border-radius: 20px;
 }

@@ -1,22 +1,26 @@
 import { Link } from "react-router-dom";
-import ListErrors from "./ListErrors";
+import ListErrors from "../../components/ListErrors";
 import React, { useEffect, useState } from "react";
-import agent from "../agent";
+import agent from "../../agent";
 import { useDispatch, useSelector } from "react-redux";
 import {
-	UPDATE_FIELD_AUTH,
 	LOGIN,
 	LOGIN_PAGE_UNLOADED,
-} from "../constants/actionTypes";
+	UPDATE_FIELD_AUTH,
+} from "../../constants/actionTypes";
 
-import EyeIcon from "../assets/icons/eye-icon";
-import FormButton from "../new-components/form/form-button";
-import FormInput from "../new-components/form/form-input";
+import EyeIcon from "../../assets/icons/eye-icon";
+import Input from "../input/input";
 import cl from "./Login.module.css";
+import Button from "../button/button";
 
 const Login: React.FC = () => {
 	const dispatch = useDispatch();
-	const state = useSelector<any, AuthForm>((state) => state.auth);
+	const state = useSelector<any, AuthForm>((state) => ({
+		email: "",
+		password: "",
+		...state.auth,
+	}));
 
 	const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
 	const passwordVisibleToggle = (
@@ -61,21 +65,21 @@ const Login: React.FC = () => {
 				<div className="row">
 					<div className="col-md-6 offset-md-3 col-xs-12">
 						<h2 className="text-xs-center">Войти</h2>
-						<p className="text-xs-center">
-							<Link to="/register">Хотите создать аккаунт??</Link>
+						<p className={`${cl.margin_group} text-xs-center`}>
+							<Link to="/register">Хотите создать аккаунт?</Link>
 						</p>
 
 						{<ListErrors errors={state.errors} />}
 
 						<form onSubmit={submitForm(state.email, state.password)}>
-							<FormInput
+							<Input
 								label="E-mail"
 								type={"email"}
 								value={state.email}
 								placeholder="E-mail"
 								onChange={changeEmail}
 							/>
-							<FormInput
+							<Input
 								label="Пароль"
 								type={passwordVisible ? "text" : "password"}
 								value={state.password}
@@ -83,8 +87,13 @@ const Login: React.FC = () => {
 								onClick={passwordVisibleToggle}
 							>
 								<EyeIcon />
-							</FormInput>
-							<FormButton className="pull-xs-right">Войти</FormButton>
+							</Input>
+
+							<div className={cl.margin_group}>
+								<Button type={"submit"} disabled={state.inProgress}>
+									Войти
+								</Button>
+							</div>
 						</form>
 					</div>
 				</div>
