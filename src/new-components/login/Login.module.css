@@ -1,0 +1,34 @@
+.login_page {
+	/* @todo: Удалите когда сделаете типографику для тэгов html, body { } */
+	font-weight: 400;
+	font-size: 16px;
+	font-family: JetBrainsMono-Regular, sans-serif;
+	font-style: normal;
+	line-height: 24px;
+}
+
+.login_page a {
+	color: #4c4cff;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.login_page a:hover {
+	color: #4c4cff;
+	text-decoration: underline;
+}
+
+.login_page h2 {
+	color: #f2f2f3;
+
+	/* @todo: Удалите когда сделаете типографику для heading / тэг h2 { } */
+	font-weight: bold;
+	font-size: 36px;
+	font-family: "Exo2-Bold", sans-serif;
+	line-height: 40px;
+}
+
+.margin_group {
+	/* Согласно figma отступ до кнопки 40px, но в браузере смотрится плохо */
+	margin-top: 40px;
+}

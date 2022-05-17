@@ -1,21 +1,20 @@
 import React, { FunctionComponent } from "react";
-import DeleteButton from "../../../components/Article/DeleteButton";
+import DeleteButton from "../Article/DeleteButton";
 import { Link } from "react-router-dom";
 import styles from "./comment-box.module.css";
-import AvatarIcon from "../../../assets/icons/avatar-icon";
 
 type CommentProps = {
 	comment: TComment;
 	currentUser: TUser;
 	slug: string;
 };
+
 export const CommentBox: FunctionComponent<CommentProps> = ({
 	comment,
 	currentUser,
 	slug,
 }) => {
 	const show = currentUser && currentUser.username === comment.author.username;
-	console.log(comment.author);
 	return (
 		<div className={`card ${styles.card}`}>
 			<div className="card-block">
@@ -23,12 +22,14 @@ export const CommentBox: FunctionComponent<CommentProps> = ({
 			</div>
 			<div className={`${styles.cardFooter}`}>
 				<Link to={`/@${comment.author.username}`} className="comment-author">
-					<AvatarIcon width={48} height={48} />
+					<img
+						src={comment.author.image}
+						className="comment-author-img"
+						alt={comment.author.username}
+					/>
 				</Link>
-				<Link
-					to={`/@${comment.author.username}`}
-					className="text text_type_main-headline"
-				>
+				&nbsp;
+				<Link to={`/@${comment.author.username}`} className="comment-author">
 					{comment.author.username}
 				</Link>
 				<span className="date-posted">

@@ -1,5 +1,4 @@
-import ArticleMeta from "./ArticleMeta";
-import CommentContainer from "../../new-components/comment/comment-container/comment-container";
+import CommentContainer from "./CommentContainer";
 import React from "react";
 import agent from "../../agent";
 import { connect } from "react-redux";
@@ -8,6 +7,7 @@ import {
 	ARTICLE_PAGE_LOADED,
 	ARTICLE_PAGE_UNLOADED,
 } from "../../constants/actionTypes";
+import { Banner } from "../../new-components/banner/banner";
 
 const mapStateToProps = (state) => ({
 	...state.article,
@@ -44,18 +44,19 @@ class Article extends React.Component {
 		const canModify =
 			this.props.currentUser &&
 			this.props.currentUser.username === this.props.article.author.username;
+
 		return (
 			<div className="article-page">
-				<div className="banner">
-					<div className="container">
-						<h1>{this.props.article.title}</h1>
-						<ArticleMeta article={this.props.article} canModify={canModify} />
-					</div>
-				</div>
+				<Banner
+					type="article"
+					article={this.props.article}
+					canModify={canModify}
+				/>
 
 				<div className="container page">
 					<div className="row article-content">
 						<div className="col-xs-12">
+							<h1>{this.props.article.title}</h1>
 							<div dangerouslySetInnerHTML={markup}></div>
 
 							<ul className="tag-list">

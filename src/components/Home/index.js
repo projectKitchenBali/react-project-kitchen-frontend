@@ -1,4 +1,4 @@
-import Banner from "./Banner";
+import { Banner } from "../../new-components/banner/banner";
 import MainView from "./MainView";
 import React from "react";
 import Tags from "./Tags";

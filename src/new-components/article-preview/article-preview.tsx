@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
 		}),
 });
 
-type TArticle = {
+export type TArticle = {
 	slug: string;
 	title: string;
 	description: string;
@@ -138,12 +138,7 @@ const ArticlePreview: React.FC<IArticlePreviewProps> = ({
 						<ul className={`${styles["tags-list"]} text_type_main-caption`}>
 							{article.tagList.map((tag) => {
 								return (
-									<li
-										className={styles["tags-default"]}
-										tag-pill
-										tag-outline
-										key={tag}
-									>
+									<li className={styles["tags-default"]} key={tag}>
 										{tag}
 									</li>
 								);

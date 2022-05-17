@@ -28,6 +28,20 @@
 	border-radius: 20px;
 }
 
+.red {
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	float: right;
+	width: fit-content;
+	height: 40px;
+	padding: 8px 16px;
+	color: #f20d33ff;
+	background-color: transparent;
+	border: 0;
+}
+
 .main:hover {
 	background: linear-gradient(0deg, rgb(0 0 0 / 20%), rgb(0 0 0 / 20%)), #4c4cff;
 }
