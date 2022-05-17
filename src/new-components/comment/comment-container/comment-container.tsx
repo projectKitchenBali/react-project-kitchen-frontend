@@ -2,7 +2,6 @@ import CommentInput from "../comment-input/comment-input";
 import CommentList from "../comment-list/comment-list";
 import { Link } from "react-router-dom";
 import React, { FC } from "react";
-import { TComment, TUser } from "../../../types/types";
 import ListErrors from "../../../components/ListErrors";
 
 type CommentListProps = {

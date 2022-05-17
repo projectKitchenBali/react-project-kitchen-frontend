@@ -2,7 +2,6 @@ import React, { FC, SyntheticEvent, useState } from "react";
 import agent from "../../../agent";
 import { ADD_COMMENT } from "../../../constants/actionTypes";
 import { connect } from "react-redux";
-import { TUser } from "../../../types/types";
 
 const mapDispatchToProps = (dispatch: any) => ({
 	onSubmit: (payload: string) => dispatch({ type: ADD_COMMENT, payload }),

@@ -3,7 +3,7 @@ import DeleteButton from "../../../components/Article/DeleteButton";
 import { Link } from "react-router-dom";
 import styles from "./comment-box.module.css";
 import AvatarIcon from "../../../assets/icons/avatar-icon";
-import { TComment, TUser } from "../../../types/types";
+import { UserMetaWithActions } from "../../user-meta-with-actions/user-meta-with-actions";
 
 type CommentProps = {
 	comment: TComment;
@@ -22,19 +22,12 @@ export const CommentBox: FunctionComponent<CommentProps> = ({
 				<p className="card-text">{comment.body}</p>
 			</div>
 			<div className={`${styles.cardFooter}`}>
-				<Link to={`/@${comment.author.username}`} className="comment-author">
-					<AvatarIcon width={48} height={48} />
-				</Link>
-				<Link
-					to={`/@${comment.author.username}`}
-					className="text text_type_main-headline"
-				>
-					{comment.author.username}
-				</Link>
-				<span className="date-posted">
-					{new Date(comment.createdAt).toDateString()}
-				</span>
-				<DeleteButton show={show} slug={slug} commentId={comment.id} />
+				<UserMetaWithActions
+					actionsType="commentBox"
+					comment={comment}
+					slug={slug}
+					canDelete={show}
+				/>
 			</div>
 		</div>
 	);

@@ -2,6 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 import ArticleActions from "../article/article-actions";
+import CommentBoxActions from "../comment/actions/comment-box-actions";
 
 import styles from "./user-meta-with-actions.module.css";
 
@@ -30,7 +31,14 @@ type TArticleActions = {
 	article: TArticle;
 };
 
-type TUserMetaWithActions = TArticleActions;
+type TCommentBoxActions = {
+	actionsType: "commentBox";
+	canDelete: boolean;
+	slug: string;
+	comment: TComment;
+};
+
+type TUserMetaWithActions = TArticleActions | TCommentBoxActions;
 
 const UserMeta: React.FC<TUserMeta> = ({ username, createdAt, imageUrl }) => {
 	return (
@@ -68,6 +76,24 @@ export const UserMetaWithActions: React.FC<TUserMetaWithActions> = (props) => {
 						<ArticleActions
 							canModify={props.canModify}
 							article={props.article}
+						/>
+					</div>
+				</>
+			);
+			break;
+		case "commentBox":
+			content = (
+				<>
+					<UserMeta
+						username={props.comment.author.username}
+						createdAt={props.comment.createdAt}
+						imageUrl={props.comment.author.image}
+					/>
+					<div className={styles["actions"]}>
+						<CommentBoxActions
+							canModify={props.canDelete}
+							comment={props.comment}
+							slug={props.slug}
 						/>
 					</div>
 				</>
