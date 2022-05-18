@@ -13,11 +13,17 @@ const TextArea: FC<TextareaHTMLAttributes<HTMLTextAreaElement>> = (props) => {
 	const [parentHeight, setParentHeight] = useState("auto");
 
 	useEffect(() => {
-		textAreaRef.current &&
-			setParentHeight(`${textAreaRef.current.scrollHeight + 2}px`);
-		textAreaRef.current &&
-			setTextAreaHeight(`${textAreaRef.current.scrollHeight + 2}px`);
-	}, [text]);
+		if (props.value === "") {
+			setTextAreaHeight("auto");
+			setParentHeight("auto");
+		} else {
+			textAreaRef.current &&
+				setParentHeight(`${textAreaRef.current.scrollHeight + 2}px`);
+			setTextAreaHeight("auto");
+			textAreaRef.current &&
+				setTextAreaHeight(`${textAreaRef.current.scrollHeight + 2}px`);
+		}
+	}, [text, props.value]);
 
 	const onChangeHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setTextAreaHeight("auto");
