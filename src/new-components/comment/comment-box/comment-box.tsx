@@ -19,7 +19,9 @@ const CommentBox: FunctionComponent<CommentProps> = ({
 	return (
 		<div className={`${styles.card}`}>
 			<div className={styles.cardBlock}>
-				<p className="text_type_main-default">{comment.body}</p>
+				<p className={`$text_type_main-default ${styles.cardText}`}>
+					{comment.body}
+				</p>
 			</div>
 			<div className={`${styles.cardFooter}`}>
 				<UserMetaWithActions

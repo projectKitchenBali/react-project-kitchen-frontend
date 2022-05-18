@@ -42,6 +42,7 @@ type TCommentBoxActions = {
 type TCommentInputActions = {
 	actionsType: "commentInput";
 	user: TUser;
+	currentDate?: Date;
 };
 
 type TUserMetaWithActions =
@@ -124,6 +125,7 @@ export const UserMetaWithActions: React.FC<TUserMetaWithActions> = (props) => {
 					<UserMeta
 						username={props.user.username}
 						imageUrl={props.user.image}
+						createdAt={props.currentDate}
 					/>
 					<div className={styles["actions"]}>
 						<CommentInputActions />

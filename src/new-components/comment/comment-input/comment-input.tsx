@@ -34,15 +34,19 @@ const CommentInput: FC<{
 		<form className={`${styles.card}`} onSubmit={createComment}>
 			<div className={`${styles.cardBlock}`}>
 				<TextArea
-					className={styles.textArea}
-					placeholder="Комменты сюда..."
+					className={`text_type_main-default ${styles.textArea}`}
+					placeholder="Написать комментарий"
 					value={body}
 					onChange={onChange}
 					rows={3}
 				></TextArea>
 			</div>
 			<div className={`${styles.cardFooter}`}>
-				<UserMetaWithActions actionsType="commentInput" user={currentUser} />
+				<UserMetaWithActions
+					actionsType="commentInput"
+					user={currentUser}
+					currentDate={new Date()}
+				/>
 			</div>
 		</form>
 	);
