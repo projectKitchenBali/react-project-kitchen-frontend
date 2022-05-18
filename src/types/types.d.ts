@@ -12,6 +12,13 @@ type TArticle = {
 	media?: string;
 };
 
+
+
+
+
+// createdAt: string;
+// updatedAt: string;
+
 type TUser = {
 	username: string;
 	image: string;
@@ -39,7 +46,7 @@ type TComment = {
 /**
  * Тип для формы входа и т.д.
  */
-type AuthForm = {
+type TAuthForm = {
 	email: string;
 	password: string;
 	inProgress: boolean;
