@@ -18,7 +18,6 @@ const CommentContainer: FC<CommentListProps> = ({
 	errors,
 }) => {
 	if (currentUser) {
-		console.log(currentUser);
 		return (
 			<div className="col-xs-12 col-md-8 offset-md-2">
 				<div>

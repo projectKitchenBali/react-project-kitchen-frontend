@@ -8,7 +8,7 @@ type CommentProps = {
 	currentUser: TUser;
 	slug: string;
 };
-export const CommentBox: FunctionComponent<CommentProps> = ({
+const CommentBox: FunctionComponent<CommentProps> = ({
 	comment,
 	currentUser,
 	slug,

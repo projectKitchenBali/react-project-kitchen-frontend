@@ -35,11 +35,7 @@ const CommentBoxActions: React.FC<ICommentMetaProps> = ({
 	};
 
 	if (canModify) {
-		return (
-			<>
-				<Button type="button" iconType="trash" onClick={del} />
-			</>
-		);
+		return <Button type="button" iconType="trash" onClick={del} />;
 	}
 
 	return null;

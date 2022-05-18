@@ -17,7 +17,7 @@ const CommentInput: FC<{
 	const [body, setBody] = useState<string>("");
 
 	const onChange = (ev: SyntheticEvent<HTMLTextAreaElement>) => {
-		const target = ev?.target as HTMLTextAreaElement;
+		const target = ev?.currentTarget as HTMLTextAreaElement;
 		setBody(target.value);
 	};
 
