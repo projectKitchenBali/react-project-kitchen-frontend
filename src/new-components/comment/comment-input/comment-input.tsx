@@ -4,6 +4,7 @@ import { ADD_COMMENT } from "../../../constants/actionTypes";
 import { connect } from "react-redux";
 import styles from "./comment-input.module.css";
 import TextArea from "../text-area/text-area";
+import { UserMetaWithActions } from "../../user-meta-with-actions/user-meta-with-actions";
 const mapDispatchToProps = (dispatch: any) => ({
 	onSubmit: (payload: string) => dispatch({ type: ADD_COMMENT, payload }),
 });
@@ -11,7 +12,7 @@ const mapDispatchToProps = (dispatch: any) => ({
 const CommentInput: FC<{
 	slug: string;
 	currentUser: TUser;
-	onSubmit: (payload: string) => any;
+	onSubmit: (payload: string) => void;
 }> = ({ slug, currentUser, onSubmit }) => {
 	const [body, setBody] = useState<string>("");
 
@@ -41,14 +42,7 @@ const CommentInput: FC<{
 				></TextArea>
 			</div>
 			<div className={`${styles.cardFooter}`}>
-				<img
-					src={currentUser.image}
-					className="comment-author-img"
-					alt={currentUser.username}
-				/>
-				<button className="btn btn-sm btn-primary" type="submit">
-					Post Comment
-				</button>
+				<UserMetaWithActions actionsType="commentInput" user={currentUser} />
 			</div>
 		</form>
 	);
