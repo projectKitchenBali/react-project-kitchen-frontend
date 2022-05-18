@@ -16,9 +16,8 @@ const CommentInput: FC<{
 }> = ({ slug, currentUser, onSubmit }) => {
 	const [body, setBody] = useState<string>("");
 
-	const onChange = (ev: SyntheticEvent<HTMLTextAreaElement>) => {
-		const target = ev?.currentTarget as HTMLTextAreaElement;
-		setBody(target.value);
+	const onChange = (ev: React.ChangeEvent<HTMLTextAreaElement>) => {
+		setBody(ev.currentTarget.value);
 	};
 
 	const createComment = (ev: React.SyntheticEvent) => {
