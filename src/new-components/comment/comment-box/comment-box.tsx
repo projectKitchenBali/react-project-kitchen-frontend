@@ -5,7 +5,7 @@ import { UserMetaWithActions } from "../../user-meta-with-actions/user-meta-with
 
 type CommentProps = {
 	comment: TComment;
-	currentUser: TUser;
+	currentUser?: TUser;
 	slug: string;
 };
 const CommentBox: FunctionComponent<CommentProps> = ({
@@ -13,7 +13,9 @@ const CommentBox: FunctionComponent<CommentProps> = ({
 	currentUser,
 	slug,
 }) => {
-	const show = currentUser && currentUser.username === comment.author.username;
+	const show = currentUser
+		? currentUser.username === comment.author.username
+		: false;
 	return (
 		<div className={`${styles.card}`}>
 			<div className={styles.cardBlock}>

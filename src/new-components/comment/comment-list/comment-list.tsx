@@ -3,7 +3,7 @@ import CommentBox from "../comment-box/comment-box";
 
 interface ICommentListProps {
 	comments: TComment[];
-	currentUser: TUser;
+	currentUser?: TUser;
 	slug: string;
 }
 
