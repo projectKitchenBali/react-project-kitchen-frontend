@@ -13,6 +13,7 @@
 
 .cardBlock {
 	padding: 1.25rem;
+	word-wrap: break-word;
 }
 
 .cardFooter {
