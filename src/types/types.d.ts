@@ -17,6 +17,17 @@ type TUser = {
 	image: string;
 	following: boolean;
 };
+type TArticleList = {
+	articles: TArticle[];
+	articlesCount: number;
+	currentPage: number;
+	pager?: (page: number) => void;
+};
+type TCurrentUser = {
+	username: string;
+	email: string;
+	image: string;
+};
 
 type TComment = {
 	id: string;

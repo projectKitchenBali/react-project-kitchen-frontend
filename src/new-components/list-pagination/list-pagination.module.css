@@ -1,0 +1,39 @@
+.container {
+	display: flex;
+	justify-content: center;
+	margin: 32px 0;
+}
+
+.pagination {
+	display: flex;
+	color: red;
+}
+
+.page-item {
+	width: 64px;
+	padding: 12px 27px;
+	color: #f2f2f3;
+	background: #131316;
+	border: 1px solid #2f2f37;
+	cursor: pointer;
+}
+
+.page-item:first-child {
+	border-radius: 20px 0 0 20px;
+}
+
+.page-item:last-child {
+	border-radius: 0 20px 20px 0;
+}
+
+.page-item:hover {
+	background: #2f2f37;
+}
+
+.active {
+	background: #4c4cff;
+}
+
+.active:hover {
+	background: #4c4cff;
+}

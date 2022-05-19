@@ -48,16 +48,16 @@ const Tags = {
 const limit = (count, p) => `limit=${count}&offset=${p ? p * count : 0}`;
 const omitSlug = (article) => Object.assign({}, article, { slug: undefined });
 const Articles = {
-	all: (page) => requests.get(`/articles?${limit(10, page)}`),
+	all: (page) => requests.get(`/articles?${limit(5, page)}`),
 	byAuthor: (author, page) =>
 		requests.get(`/articles?author=${encode(author)}&${limit(5, page)}`),
 	byTag: (tag, page) =>
-		requests.get(`/articles?tag=${encode(tag)}&${limit(10, page)}`),
+		requests.get(`/articles?tag=${encode(tag)}&${limit(5, page)}`),
 	del: (slug) => requests.del(`/articles/${slug}`),
 	favorite: (slug) => requests.post(`/articles/${slug}/favorite`),
 	favoritedBy: (author, page) =>
 		requests.get(`/articles?favorited=${encode(author)}&${limit(5, page)}`),
-	feed: () => requests.get("/articles/feed?limit=10&offset=0"),
+	feed: () => requests.get("/articles/feed?limit=5&offset=0"),
 	get: (slug) => requests.get(`/articles/${slug}`),
 	unfavorite: (slug) => requests.del(`/articles/${slug}/favorite`),
 	update: (article) =>
