@@ -1,0 +1,34 @@
+.card {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	color: #8585ad;
+	background-color: #2f2f37;
+	border: 0;
+	border-radius: 20px;
+}
+
+.cardBlock {
+	margin: 20px;
+	padding: 0;
+}
+
+.textArea {
+	width: 100%;
+	height: 100%;
+	padding: 24px 4px;
+	overflow: auto;
+	background-color: #2f2f37;
+	border: none;
+	outline: none;
+	box-shadow: none;
+	resize: none;
+}
+
+.cardFooter {
+	height: 80px;
+	padding: 20px;
+	color: #8585ad;
+	background-color: #1c1c21;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
