@@ -83,7 +83,7 @@ interface IProfile {
 const Profile: React.FC<IProfile> = ({ ...props }) => {
 	const [current, setCurrent] = React.useState("Ваши посты");
 	const articleList = props.articleList;
-	const onClickFavorite = () => {
+	const onFavorite = () => {
 		setCurrent("Любимые посты");
 		props.onFavoriteLoad(
 			(page: number) =>
@@ -106,15 +106,7 @@ const Profile: React.FC<IProfile> = ({ ...props }) => {
 
 	useEffect(() => {
 		if (props.location.pathname.includes("favorites")) {
-			setCurrent("Любимые посты");
-			props.onFavoriteLoad(
-				(page: number) =>
-					agent.Articles.favoritedBy(props.match.params.username, page),
-				Promise.all([
-					agent.Profile.get(props.match.params.username),
-					agent.Articles.favoritedBy(props.match.params.username),
-				])
-			);
+			onFavorite();
 		} else {
 			props.onLoad(
 				Promise.all([
@@ -156,7 +148,7 @@ const Profile: React.FC<IProfile> = ({ ...props }) => {
 						<Tab
 							value="Любимые посты"
 							active={current === "Любимые посты"}
-							onClick={onClickFavorite}
+							onClick={onFavorite}
 						>
 							Любимые посты
 						</Tab>
