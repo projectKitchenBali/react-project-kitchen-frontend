@@ -1,34 +1,50 @@
 import React from "react";
-import cl from "./input.module.css";
+import styles from "./input.module.css";
 
 interface FormInputProps {
+	name?: string;
 	value: string;
 	label?: string;
 	type: "text" | "password" | "email"; // file
 	placeholder?: string;
+	error?: boolean;
 
 	onChange(e: React.ChangeEvent<HTMLInputElement>): void;
-	onClick?(e: React.MouseEvent<HTMLAnchorElement>): void;
+	onIconClick?(e: React.MouseEvent<HTMLAnchorElement>): void;
+	onBlur?(e: React.FocusEvent<HTMLInputElement>): void;
 }
 
-const Input: React.FC<FormInputProps> = (props) => {
+const Input: React.FC<FormInputProps> = ({
+	name,
+	value,
+	label,
+	type,
+	placeholder,
+	onChange,
+	onIconClick,
+	onBlur,
+	error,
+	children,
+}) => {
 	return (
-		<div className={cl.group}>
-			{props.label && <label className={cl.label}>{props.label}</label>}
+		<div className={styles.group}>
+			{label && <label className={styles.label}>{label}</label>}
 
-			<div className={cl.controls}>
-				{props.onClick && (
-					<a href="#" className={cl.icon} onClick={props.onClick}>
-						{props.children}
+			<div className={styles.controls}>
+				{onIconClick && (
+					<a href="#" className={styles.icon} onClick={onIconClick}>
+						{children}
 					</a>
 				)}
 
 				<input
-					className={cl.control}
-					type={props.type}
-					placeholder={props.placeholder}
-					value={props.value}
-					onChange={props.onChange}
+					className={`${styles.control} ${error ? styles.control__error : ""}`}
+					name={name}
+					type={type}
+					placeholder={placeholder}
+					value={value}
+					onChange={onChange}
+					onBlur={onBlur}
 				/>
 			</div>
 		</div>

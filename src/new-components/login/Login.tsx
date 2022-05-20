@@ -13,6 +13,7 @@ import EyeIcon from "../../assets/icons/eye-icon";
 import Input from "../input/input";
 import cl from "./Login.module.css";
 import Button from "../button/button";
+import EyeOffIcon from "../../assets/icons/eye-off-icon";
 
 const Login: React.FC = () => {
 	const dispatch = useDispatch();
@@ -59,6 +60,32 @@ const Login: React.FC = () => {
 
 	useEffect((): (() => void) => onUnload, []); // unmount
 
+	// валидация
+
+	const [isMailError, setIsMailError] = useState(false);
+	const [isPasswordError, setIsPasswordError] = useState(false);
+
+	const validateEmail = (email: string) => {
+		const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		return re.test(email);
+	};
+
+	const handleMailBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+		if (e.target.value) {
+			setIsMailError(!validateEmail(e.target.value));
+		} else {
+			setIsMailError(false);
+		}
+	};
+
+	const handlePasswordBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+		if (e.target.value.length <= 5) {
+			setIsPasswordError(true);
+		} else {
+			setIsPasswordError(false);
+		}
+	};
+
 	return (
 		<div className={cl.login_page}>
 			<div className="container page">
@@ -78,15 +105,21 @@ const Login: React.FC = () => {
 								value={state.email}
 								placeholder="E-mail"
 								onChange={changeEmail}
+								onBlur={handleMailBlur}
+								error={isMailError}
 							/>
+
 							<Input
 								label="Пароль"
 								type={passwordVisible ? "text" : "password"}
 								value={state.password}
+								placeholder={"*********"}
 								onChange={changePassword}
-								onClick={passwordVisibleToggle}
+								onIconClick={passwordVisibleToggle}
+								onBlur={handlePasswordBlur}
+								error={isPasswordError}
 							>
-								<EyeIcon />
+								{passwordVisible ? <EyeOffIcon /> : <EyeIcon />}
 							</Input>
 
 							<div className={cl.margin_group}>

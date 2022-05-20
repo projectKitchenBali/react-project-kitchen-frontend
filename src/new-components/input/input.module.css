@@ -13,7 +13,7 @@
 	display: inline-block;
 	margin-bottom: 0;
 	padding: 0.5rem 0.75rem;
-	color: #f2f2f3; /* @todo: Удалите хардкорный цвет, когда будет единая типографика */
+	color: var(--text-primary-color);
 }
 
 .controls {
@@ -29,6 +29,15 @@
 	background: #2f2f37;
 	border: 1px solid rgb(0 0 0 / 15%);
 	border-radius: 20px;
+}
+
+.control:focus {
+	border: 2px solid var(--interface-accent);
+	outline: none;
+}
+
+.control__error {
+	border: 2px solid var(--error-color);
 }
 
 .icon {

@@ -1,3 +1,9 @@
+:root {
+	--text-primary-color: #f2f2f3;
+	--error-color: #f20d33;
+	--interface-accent: #4c4cff;
+}
+
 @font-face {
 	font-weight: 400;
 	font-family: JetBrainsMono-Regular;
