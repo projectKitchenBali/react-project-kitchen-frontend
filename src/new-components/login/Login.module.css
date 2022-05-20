@@ -8,18 +8,18 @@
 }
 
 .login_page a {
-	color: #4c4cff;
+	color: var(--interface-accent);
 	text-decoration: none;
 	cursor: pointer;
 }
 
 .login_page a:hover {
-	color: #4c4cff;
+	color: var(--interface-accent);
 	text-decoration: underline;
 }
 
 .login_page h2 {
-	color: #f2f2f3;
+	color: var(--text-primary-color);
 
 	/* @todo: Удалите когда сделаете типографику для heading / тэг h2 { } */
 	font-weight: bold;
