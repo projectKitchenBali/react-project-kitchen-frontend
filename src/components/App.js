@@ -9,7 +9,7 @@ import Home from "../components/Home";
 import Login from "../new-components/login/Login";
 import Profile from "../components/Profile";
 import ProfileFavorites from "../components/ProfileFavorites";
-import Register from "../components/Register";
+import Register from "../new-components/register/register";
 import Settings from "../components/Settings";
 import { store } from "../store";
 import { push } from "connected-react-router";
