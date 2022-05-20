@@ -1,23 +1,23 @@
-import ArticlePreview from "../article-preview/article-preview";
-import ListPagination from "../../components/ListPagination";
 import React from "react";
+import ArticlePreview from "../article-preview/article-preview";
+import ListPagination from "../list-pagination/list-pagination";
+import cl from './article-list.module.css';
 
 interface ArticleListProps {
-    pager: (page?: number) => any;
+    pager: (page: number) => void;
     articles: TArticle[];
-    loading?: boolean;
     articlesCount: number;
     currentPage: number;
 }
 
-const ArticleList: React.FC<ArticleListProps> = ({articles, articlesCount, currentPage, loading, pager}) => {
+const ArticleList: React.FC<ArticleListProps> = ({articles, articlesCount, currentPage, pager}) => {
 
     if (!articles) {
-        return <div className="article-preview">Загрузка ...</div>;
+        return <div className={cl.block}>Загрузка ...</div>;
     }
 
     if (articles.length === 0) {
-        return <div className="article-preview">Здесь нет статей... пока.</div>;
+        return <div className={cl.block}>Здесь пусто... пока что.</div>;
     }
 
     return (

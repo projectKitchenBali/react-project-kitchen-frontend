@@ -1,4 +1,4 @@
-import ArticleList from "../../components/ArticleList";
+import ArticleList from "../article-list/article-list";
 import React, { Dispatch, useEffect } from "react";
 import agent from "../../agent";
 import { connect } from "react-redux";
@@ -16,12 +16,7 @@ import { Link } from "react-router-dom";
 
 type TState = {
 	article?: TArticle;
-	articleList: {
-		articles: TArticle[];
-		articlesCount: number;
-		currentPage: number;
-		pager: (page: number) => void;
-	};
+	articleList: TArticleList;
 	profile: TUser;
 	common: {
 		appName: string;

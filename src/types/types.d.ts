@@ -24,12 +24,17 @@ type TUser = {
 	image: string;
 	following: boolean;
 };
+
 type TArticleList = {
 	articles: TArticle[];
 	articlesCount: number;
 	currentPage: number;
-	pager?: (page: number) => void;
+	pager: (page: number) => void;
+	tab: string;
+	tag: string;
+	tags: string[];
 };
+
 type TCurrentUser = {
 	username: string;
 	email: string;
