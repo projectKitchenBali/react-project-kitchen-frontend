@@ -12,10 +12,6 @@ type TArticle = {
 	media?: string;
 };
 
-
-
-
-
 // createdAt: string;
 // updatedAt: string;
 

@@ -67,9 +67,7 @@ const ArticlePreview: React.FC<IArticlePreviewProps> = ({
 	return (
 		<div className={styles["article-preview"]}>
 			<div className={styles["media"]}>
-				{article.media && (
-					<img src={article.media} alt={article.title} />
-				)}
+				{article.media && <img src={article.media} alt={article.title} />}
 			</div>
 
 			<div className={styles["article-content"]}>
