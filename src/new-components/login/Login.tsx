@@ -63,9 +63,8 @@ const Login: React.FC = () => {
 	// валидация
 
 	const [isMailError, setIsMailError] = useState(false);
-	const [isPasswordError, setIsPasswordError] = useState(false);
 
-	const [passwordErrorText, SetPasswordErrorText] = useState("");
+	const [mailErrorText, setMailErrorText] = useState("");
 
 	const validateEmail = (email: string) => {
 		const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -75,17 +74,9 @@ const Login: React.FC = () => {
 	const handleMailBlur = (e: React.FocusEvent<HTMLInputElement>) => {
 		if (e.target.value) {
 			setIsMailError(!validateEmail(e.target.value));
+			setMailErrorText("Вот так надо email@example.com любезный!");
 		} else {
 			setIsMailError(false);
-		}
-	};
-
-	const handlePasswordBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-		if (e.target.value.length <= 5) {
-			setIsPasswordError(true);
-			SetPasswordErrorText("Пароль должен быть не менее 6 символов");
-		} else {
-			setIsPasswordError(false);
 		}
 	};
 
@@ -110,6 +101,7 @@ const Login: React.FC = () => {
 								onChange={changeEmail}
 								onBlur={handleMailBlur}
 								error={isMailError}
+								errorText={mailErrorText}
 							/>
 
 							<Input
@@ -119,9 +111,6 @@ const Login: React.FC = () => {
 								placeholder={"*********"}
 								onChange={changePassword}
 								onIconClick={passwordVisibleToggle}
-								onBlur={handlePasswordBlur}
-								error={isPasswordError}
-								errorText={passwordErrorText}
 							>
 								{passwordVisible ? <EyeOffIcon /> : <EyeIcon />}
 							</Input>

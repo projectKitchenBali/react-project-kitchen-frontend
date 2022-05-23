@@ -14,7 +14,7 @@ import Button from "../button/button";
 const Register: FC = () => {
 	const dispatch = useDispatch();
 
-	const state = useSelector<any, AuthForm>((state) => ({
+	const state = useSelector<{ auth: RegisterForm }, RegisterForm>((state) => ({
 		...state.auth,
 	}));
 
@@ -32,10 +32,10 @@ const Register: FC = () => {
 		setPasswordVisible((state) => !state);
 	};
 
-	const handleChange = (e: { target: HTMLInputElement }) => {
+	const handleChange = (e: FormEvent<HTMLInputElement>) => {
 		setFormValue({
 			...formValue,
-			[e.target.name]: e.target.value,
+			[e.currentTarget.name]: e.currentTarget.value,
 		});
 	};
 
@@ -66,7 +66,9 @@ const Register: FC = () => {
 	const [isMailError, setIsMailError] = useState(false);
 	const [isPasswordError, setIsPasswordError] = useState(false);
 
-	const [passwordErrorText, SetPasswordErrorText] = useState("");
+	const [nameErrorText, setNameErrorText] = useState("");
+	const [mailErrorText, setMailErrorText] = useState("");
+	const [passwordErrorText, setPasswordErrorText] = useState("");
 
 	const validateName = (name: string) => {
 		const re = /^[a-zA-Z](.[a-zA-Z0-9_-]*)$/;
@@ -80,7 +82,12 @@ const Register: FC = () => {
 
 	const handleNameBlur = (e: React.FocusEvent<HTMLInputElement>) => {
 		if (e.target.value) {
+			if (e.target.value.length === 1) {
+				setIsNameError(!validateName(e.target.value));
+				return setNameErrorText("Имя должно быть не менее 2-х символов");
+			}
 			setIsNameError(!validateName(e.target.value));
+			setNameErrorText("Имеется запрещенный символ...не надо так!");
 		} else {
 			setIsNameError(false);
 		}
@@ -89,15 +96,17 @@ const Register: FC = () => {
 	const handleMailBlur = (e: React.FocusEvent<HTMLInputElement>) => {
 		if (e.target.value) {
 			setIsMailError(!validateEmail(e.target.value));
+			setMailErrorText("Вот так надо email@example.com любезный!");
 		} else {
 			setIsMailError(false);
 		}
 	};
 
 	const handlePasswordBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+		if (e.target.value.length === 0) return setIsPasswordError(false);
 		if (e.target.value.length <= 5) {
 			setIsPasswordError(true);
-			SetPasswordErrorText("Пароль должен быть не менее 6 символов");
+			setPasswordErrorText("Пароль должен быть не менее 6 символов");
 		} else {
 			setIsPasswordError(false);
 		}
@@ -125,6 +134,7 @@ const Register: FC = () => {
 								onChange={handleChange}
 								onBlur={handleNameBlur}
 								error={isNameError}
+								errorText={nameErrorText}
 							/>
 
 							<Input
@@ -136,6 +146,7 @@ const Register: FC = () => {
 								onChange={handleChange}
 								onBlur={handleMailBlur}
 								error={isMailError}
+								errorText={mailErrorText}
 							/>
 
 							<Input

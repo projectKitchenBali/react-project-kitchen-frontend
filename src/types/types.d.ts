@@ -47,3 +47,13 @@ type AuthForm = {
 		[error: string]: string;
 	};
 };
+
+/**
+ * Тип для формы регистрации и т.д.
+ */
+type RegisterForm = {
+	inProgress: boolean;
+	errors: {
+		[error: string]: string;
+	};
+};
