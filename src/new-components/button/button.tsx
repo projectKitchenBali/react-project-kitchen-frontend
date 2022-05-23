@@ -8,7 +8,7 @@ import TrashIcon from "../../assets/icons/trash-icon";
 import styles from "./button.module.css";
 
 interface IButton {
-	children: ReactChild;
+	children?: ReactChild;
 	onClick?: () => void;
 	disabled?: boolean;
 	type?: "button" | "submit" | "reset" | undefined;
