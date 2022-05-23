@@ -1,0 +1,12 @@
+.block {
+	padding: 1.5rem 0;
+
+	/* @todo: дефолтная типографика в html, body */
+	color: #f2f2f3;
+	font-weight: 400;
+	font-size: 16px;
+	font-family: JetBrainsMono-Regular, sans-serif;
+	font-style: normal;
+	line-height: 24px;
+	border-top: 1px solid rgb(0 0 0 / 10%);
+}

@@ -27,24 +27,6 @@ const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
 		}),
 });
 
-export type TArticle = {
-	slug: string;
-	title: string;
-	description: string;
-	body: string;
-	createdAt: string;
-	updatedAt: string;
-	tagList: string[];
-	favorited: boolean;
-	favoritesCount: number;
-	media?: string;
-	author: {
-		username: string;
-		image: string;
-		following: boolean;
-	};
-};
-
 interface IArticlePreviewProps {
 	article: TArticle;
 	favorite: (slug: string) => {

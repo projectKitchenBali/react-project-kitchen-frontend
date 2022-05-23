@@ -12,17 +12,25 @@ type TArticle = {
 	media?: string;
 };
 
+// createdAt: string;
+// updatedAt: string;
+
 type TUser = {
 	username: string;
 	image: string;
 	following: boolean;
 };
+
 type TArticleList = {
 	articles: TArticle[];
 	articlesCount: number;
 	currentPage: number;
-	pager?: (page: number) => void;
+	pager: (page: number) => void;
+	tab: string;
+	tag: string;
+	tags: string[];
 };
+
 type TCurrentUser = {
 	username: string;
 	email: string;
@@ -39,7 +47,7 @@ type TComment = {
 /**
  * Тип для формы входа и т.д.
  */
-type AuthForm = {
+type TAuthForm = {
 	email: string;
 	password: string;
 	inProgress: boolean;

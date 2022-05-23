@@ -16,7 +16,7 @@ import Button from "../button/button";
 
 const Login: React.FC = () => {
 	const dispatch = useDispatch();
-	const state = useSelector<any, AuthForm>((state) => ({
+	const state = useSelector<any, TAuthForm>((state) => ({
 		email: "",
 		password: "",
 		...state.auth,

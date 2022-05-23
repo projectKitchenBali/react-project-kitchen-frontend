@@ -1,5 +1,5 @@
 import { Banner } from "../../new-components/banner/banner";
-import MainView from "./MainView";
+import MainView from "../../new-components/home/main-view/main-view";
 import React from "react";
 import Tags from "./Tags";
 import agent from "../../agent";
