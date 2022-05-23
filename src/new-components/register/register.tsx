@@ -66,6 +66,8 @@ const Register: FC = () => {
 	const [isMailError, setIsMailError] = useState(false);
 	const [isPasswordError, setIsPasswordError] = useState(false);
 
+	const [passwordErrorText, SetPasswordErrorText] = useState("");
+
 	const validateName = (name: string) => {
 		const re = /^[a-zA-Z](.[a-zA-Z0-9_-]*)$/;
 		return re.test(name);
@@ -80,7 +82,7 @@ const Register: FC = () => {
 		if (e.target.value) {
 			setIsNameError(!validateName(e.target.value));
 		} else {
-			setIsMailError(false);
+			setIsNameError(false);
 		}
 	};
 
@@ -95,6 +97,7 @@ const Register: FC = () => {
 	const handlePasswordBlur = (e: React.FocusEvent<HTMLInputElement>) => {
 		if (e.target.value.length <= 5) {
 			setIsPasswordError(true);
+			SetPasswordErrorText("Пароль должен быть не менее 6 символов");
 		} else {
 			setIsPasswordError(false);
 		}
@@ -145,6 +148,7 @@ const Register: FC = () => {
 								onIconClick={passwordVisibleToggle}
 								onBlur={handlePasswordBlur}
 								error={isPasswordError}
+								errorText={passwordErrorText}
 							>
 								{passwordVisible ? <EyeOffIcon /> : <EyeIcon />}
 							</Input>

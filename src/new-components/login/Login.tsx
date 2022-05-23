@@ -65,6 +65,8 @@ const Login: React.FC = () => {
 	const [isMailError, setIsMailError] = useState(false);
 	const [isPasswordError, setIsPasswordError] = useState(false);
 
+	const [passwordErrorText, SetPasswordErrorText] = useState("");
+
 	const validateEmail = (email: string) => {
 		const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		return re.test(email);
@@ -81,6 +83,7 @@ const Login: React.FC = () => {
 	const handlePasswordBlur = (e: React.FocusEvent<HTMLInputElement>) => {
 		if (e.target.value.length <= 5) {
 			setIsPasswordError(true);
+			SetPasswordErrorText("Пароль должен быть не менее 6 символов");
 		} else {
 			setIsPasswordError(false);
 		}
@@ -118,6 +121,7 @@ const Login: React.FC = () => {
 								onIconClick={passwordVisibleToggle}
 								onBlur={handlePasswordBlur}
 								error={isPasswordError}
+								errorText={passwordErrorText}
 							>
 								{passwordVisible ? <EyeOffIcon /> : <EyeIcon />}
 							</Input>

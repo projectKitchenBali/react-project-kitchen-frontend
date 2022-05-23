@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styles from "./input.module.css";
 
 interface FormInputProps {
@@ -8,6 +8,7 @@ interface FormInputProps {
 	type: "text" | "password" | "email"; // file
 	placeholder?: string;
 	error?: boolean;
+	errorText?: string;
 
 	onChange(e: React.ChangeEvent<HTMLInputElement>): void;
 	onIconClick?(e: React.MouseEvent<HTMLAnchorElement>): void;
@@ -24,8 +25,16 @@ const Input: React.FC<FormInputProps> = ({
 	onIconClick,
 	onBlur,
 	error,
+	errorText,
 	children,
 }) => {
+	const errorToRender = useMemo(
+		() =>
+			error &&
+			errorText && <p className={styles.message__error}>{errorText}</p>,
+		[error, errorText]
+	);
+
 	return (
 		<div className={styles.group}>
 			{label && <label className={styles.label}>{label}</label>}
@@ -47,6 +56,7 @@ const Input: React.FC<FormInputProps> = ({
 					onBlur={onBlur}
 				/>
 			</div>
+			{errorToRender}
 		</div>
 	);
 };
