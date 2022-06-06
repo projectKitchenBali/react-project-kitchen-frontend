@@ -8,7 +8,7 @@ import Editor from "../components/Editor";
 import Home from "../components/Home";
 import Login from "../new-components/login/Login";
 import Profile from "../new-components/profile/profile";
-import Register from "../components/Register";
+import Register from "../new-components/register/register";
 import Settings from "../components/Settings";
 import { store } from "../store";
 import { push } from "connected-react-router";

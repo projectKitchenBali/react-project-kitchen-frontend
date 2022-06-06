@@ -1,36 +1,62 @@
-import React from "react";
-import cl from "./input.module.css";
+import React, { useMemo } from "react";
+import styles from "./input.module.css";
 
 interface FormInputProps {
+	name?: string;
 	value: string;
 	label?: string;
 	type: "text" | "password" | "email"; // file
 	placeholder?: string;
+	error?: boolean;
+	errorText?: string;
 
 	onChange(e: React.ChangeEvent<HTMLInputElement>): void;
-	onClick?(e: React.MouseEvent<HTMLAnchorElement>): void;
+	onIconClick?(e: React.MouseEvent<HTMLAnchorElement>): void;
+	onBlur?(e: React.FocusEvent<HTMLInputElement>): void;
 }
 
-const Input: React.FC<FormInputProps> = (props) => {
-	return (
-		<div className={cl.group}>
-			{props.label && <label className={cl.label}>{props.label}</label>}
+const Input: React.FC<FormInputProps> = ({
+	name,
+	value,
+	label,
+	type,
+	placeholder,
+	onChange,
+	onIconClick,
+	onBlur,
+	error,
+	errorText,
+	children,
+}) => {
+	const errorToRender = useMemo(
+		() =>
+			error &&
+			errorText && <p className={styles.message__error}>{errorText}</p>,
+		[error, errorText]
+	);
 
-			<div className={cl.controls}>
-				{props.onClick && (
-					<a href="#" className={cl.icon} onClick={props.onClick}>
-						{props.children}
+	return (
+		<div className={styles.group}>
+			{label && <label className={styles.label}>{label}</label>}
+
+			<div className={styles.controls}>
+				{onIconClick && (
+					<a href="#" className={styles.icon} onClick={onIconClick}>
+						{children}
 					</a>
 				)}
 
 				<input
-					className={cl.control}
-					type={props.type}
-					placeholder={props.placeholder}
-					value={props.value}
-					onChange={props.onChange}
+					className={`${styles.control} ${error ? styles.control__error : ""}`}
+					name={name}
+					type={type}
+					placeholder={placeholder}
+					value={value}
+					onChange={onChange}
+					onBlur={onBlur}
 				/>
 			</div>
+			{errorToRender}
 		</div>
 	);
 };

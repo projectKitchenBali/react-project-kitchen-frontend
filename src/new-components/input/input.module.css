@@ -13,7 +13,7 @@
 	display: inline-block;
 	margin-bottom: 0;
 	padding: 0.5rem 0.75rem;
-	color: #f2f2f3; /* @todo: Удалите хардкорный цвет, когда будет единая типографика */
+	color: var(--text-primary-color);
 }
 
 .controls {
@@ -25,10 +25,33 @@
 	width: 100%;
 	height: 40px;
 	padding: 8px 16px;
-	color: #8585ad;
-	background: #2f2f37;
-	border: 1px solid rgb(0 0 0 / 15%);
+	color: var(--text-secondary-color);
+	background: var(--background-element);
+	border: 2px solid var(--background-element);
+
+	/* border: none; */
 	border-radius: 20px;
+	transition: 0.3s;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	box-shadow: 0 0 0 30px var(--background-element) inset !important;
+}
+
+.control:-webkit-autofill {
+	-webkit-text-fill-color: var(--text-secondary-color) !important;
+}
+
+.control:focus {
+	border: 2px solid var(--interface-accent);
+	outline: none;
+}
+
+.control__error {
+	border: 2px solid var(--error-color);
 }
 
 .icon {
@@ -45,4 +68,10 @@
 
 .icon ~ .control {
 	padding-right: 2.5em !important;
+}
+
+.message__error {
+	margin-top: 4px;
+	margin-left: 16px;
+	color: var(--error-color);
 }
