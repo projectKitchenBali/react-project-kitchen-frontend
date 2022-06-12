@@ -25,7 +25,7 @@ type TArticleList = {
 	articles: TArticle[];
 	articlesCount: number;
 	currentPage: number;
-	pager: (page: number) => void;
+	pager: (page: number) => Omit<TArticleList, "articles" | "articlesCount">;
 	tab: string;
 	tag: string;
 	tags: string[];
