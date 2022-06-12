@@ -10,6 +10,7 @@
 	display: flex;
 	justify-content: center;
 	background-color: #131316;
+	border-bottom: 1px solid #2f2f37;
 }
 
 .banner_article {
@@ -26,6 +27,7 @@
 .banner_article_inner {
 	display: block;
 	width: 100%;
+	margin-right: 16px;
 	margin-left: 32px;
 }
 
