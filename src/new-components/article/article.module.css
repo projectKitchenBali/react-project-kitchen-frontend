@@ -1,0 +1,49 @@
+.article {
+	box-sizing: border-box;
+	margin: 0 auto;
+	padding: 0 32px;
+	background: #131316;
+}
+
+.title {
+	margin-top: 16px;
+	color: #f2f2f3;
+}
+
+.body {
+	margin-top: 32px;
+}
+
+.tags-list {
+	display: flex;
+	gap: 4px;
+	max-width: 50%;
+	margin: 0;
+	color: white;
+}
+
+.tags-default {
+	width: fit-content;
+	padding: 4px 8px;
+	list-style: none;
+	background: #2f2f37;
+	border-radius: 100px;
+}
+
+@media (min-width: 768px) {
+	.article {
+		width: 720px;
+	}
+}
+
+@media (min-width: 992px) {
+	.article {
+		width: 940px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.article {
+		min-width: 1140px;
+	}
+}
