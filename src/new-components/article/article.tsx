@@ -81,14 +81,17 @@ const Article: React.FC<IArticle> = ({ ...props }) => {
 		props.currentUser.username === props.article.author.username;
 
 	return (
-		<div className="article-page">
+		<>
 			<Banner type="article" article={props.article} canModify={canModify} />
 
 			<div className={styles["article"]}>
 				<h1 className={`${styles["title"]} text_type_main-h2`}>
 					{props.article.title}
 				</h1>
-				<div className={styles["body"]} dangerouslySetInnerHTML={markup}></div>
+				<div
+					className={`${styles["body"]} text text_type_main-default`}
+					dangerouslySetInnerHTML={markup}
+				></div>
 
 				<ul className={`${styles["tags-list"]} text_type_main-caption`}>
 					{props.article.tagList.map((tag) => {
@@ -107,7 +110,7 @@ const Article: React.FC<IArticle> = ({ ...props }) => {
 					currentUser={props.currentUser}
 				/>
 			</div>
-		</div>
+		</>
 	);
 };
 
