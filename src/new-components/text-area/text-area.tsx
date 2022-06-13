@@ -5,8 +5,11 @@ import React, {
 	useRef,
 	TextareaHTMLAttributes,
 } from "react";
+import styles from "./text-area.module.css";
 
-const TextArea: FC<TextareaHTMLAttributes<HTMLTextAreaElement>> = (props) => {
+const TextArea: FC<
+	TextareaHTMLAttributes<HTMLTextAreaElement> & { label?: string }
+> = (props) => {
 	const textAreaRef = useRef<HTMLTextAreaElement>(null);
 	const [text, setText] = useState("");
 	const [textAreaHeight, setTextAreaHeight] = useState("auto");
@@ -42,6 +45,7 @@ const TextArea: FC<TextareaHTMLAttributes<HTMLTextAreaElement>> = (props) => {
 				minHeight: parentHeight,
 			}}
 		>
+			{props.label && <label className={styles.label}>{props.label}</label>}
 			<textarea
 				{...props}
 				ref={textAreaRef}
