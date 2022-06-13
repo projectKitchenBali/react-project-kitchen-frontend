@@ -1,7 +1,8 @@
-import React from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import Input from "../input/input";
 import Button from "../button/button";
 import Textarea from "../textarea/textarea";
+import {useSelector} from "react-redux";
 import cl from './settings.module.css';
 
 interface SettingsFromProps {
@@ -15,121 +16,74 @@ interface SettingsFormState {
     bio: string;
     email: string;
     password?: string;
-    inProgress?: boolean;
 }
 
-class SettingsForm extends React.Component<SettingsFromProps, SettingsFormState> {
+const SettingsForm: React.FC<SettingsFromProps> = ({currentUser, onSubmitForm}) => {
 
-    state: SettingsFormState = {
-        image: "",
-        username: "",
-        bio: "",
-        email: "",
-        password: "",
+    const [state, setState] = useState<SettingsFormState>({
+        image: '',
+        username: '',
+        bio: '',
+        email: '',
+        password: '',
+    });
+
+    useEffect(() => {
+        if (!currentUser) return;
+        setState({
+            password: '',
+            image: currentUser.image || "",
+            username: currentUser.username,
+            bio: currentUser.bio,
+            email: currentUser.email
+        });
+    }, [currentUser]);
+
+
+    const updateState = (field: string) => (ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setState({...state, [field]: ev.currentTarget.value})
     };
 
-    updateState = (field: any) => (ev: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const state = this.state;
-        const newState = Object.assign({}, state, {[field]: ev.currentTarget.value});
-        this.setState(newState);
-    };
-
-    submitForm = (ev: React.SyntheticEvent) => {
+    const submitForm = (ev: React.FormEvent) => {
         ev.preventDefault();
 
-        const user = Object.assign({}, this.state);
+        const user = Object.assign({}, state);
+
         if (!user.password) {
             delete user.password;
         }
 
-        this.props.onSubmitForm(user);
+        onSubmitForm(user);
     };
 
-    componentWillMount() {
-        if (this.props.currentUser) {
-            Object.assign(this.state, {
-                image: this.props.currentUser.image || "",
-                username: this.props.currentUser.username,
-                bio: this.props.currentUser.bio,
-                email: this.props.currentUser.email,
-            });
-        }
-    }
+    const inProgress = useSelector<any, boolean>((state) => state.settings.inProgress);
 
-    componentWillReceiveProps(nextProps: any) {
-        if (nextProps.currentUser) {
-            this.setState(
-                Object.assign({}, this.state, {
-                    image: nextProps.currentUser.image || "",
-                    username: nextProps.currentUser.username,
-                    bio: nextProps.currentUser.bio,
-                    email: nextProps.currentUser.email,
-                })
-            );
-        }
-    }
+    return (
+        <form className={cl.form} onSubmit={submitForm}>
 
-    render() {
-        return (
+            <Input label="Изображение профиля" type={"text"} value={state.image}
+                   placeholder="Изображение профиля" onChange={updateState('image')}/>
 
+            <Input label="Имя пользователя" type={"text"} value={state.username}
+                   placeholder="Имя пользователя" onChange={updateState('username')}/>
 
+            <Textarea label="Информация о вас" value={state.bio} placeholder="Информация о вас"
+                      rows={4} onChange={updateState('bio')}/>
 
-            <form className={cl.form} onSubmit={this.submitForm}>
+            <Input label="E-mail" type={"email"} value={state.email}
+                   placeholder="E-mail" onChange={updateState('email')}/>
 
-                <Input
-                    label="Изображение профиля"
-                    type={"text"}
-                    value={this.state.image}
-                    placeholder="Изображение профиля"
-                    onChange={this.updateState("image")}
-                />
+            <Input label="Новый пароль" type={"password"} value={state?.password || ''}
+                   placeholder="Новый пароль" onChange={updateState('password')}/>
 
-                <Input
-                    label="Имя пользователя"
-                    type={"text"}
-                    value={this.state.username}
-                    placeholder="Имя пользователя"
-                    onChange={this.updateState("username")}
-                />
+            <div className="m-t-2">
+                <Button type={"submit"} disabled={inProgress}>
+                    Сохранить
+                </Button>
+            </div>
 
-                <Textarea label="Информация о вас"
-                          value={this.state.bio}
-                          placeholder="Информация о вас"
-                          rows={4}
-                          onChange={this.updateState("bio")}
-                />
-
-                <Input
-                    label="E-mail"
-                    type={"email"}
-                    value={this.state.email}
-                    placeholder="E-mail"
-                    onChange={this.updateState("email")}
-                />
-
-                <Input
-                    label="Новый пароль"
-                    type={"password"}
-                    value={this.state?.password || ''}
-                    placeholder="Новый пароль"
-                    onChange={this.updateState("password")}
-                >
-
-                </Input>
-
-                <div>
-
-
-                    <Button type={"submit"} disabled={this.state.inProgress}>
-                        Сохранить
-                    </Button>
-
-                </div>
-
-
-            </form>
-        );
-    }
-}
+        </form>
+    )
+};
 
 export default SettingsForm;
