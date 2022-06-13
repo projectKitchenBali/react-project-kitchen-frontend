@@ -1,99 +1,128 @@
-import React, {ChangeEvent, SyntheticEvent, useEffect, useState} from "react";
+import React, { ChangeEvent, SyntheticEvent, useEffect, useState } from "react";
 import Input from "../input/input";
 import Button from "../button/button";
 import Textarea from "../textarea/textarea";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import EyeOffIcon from "../../assets/icons/eye-off-icon";
 import EyeIcon from "../../assets/icons/eye-icon";
-import cl from './settings.module.css';
+import cl from "./settings.module.css";
 
 interface SettingsFromProps {
-    onSubmitForm: (user: SettingsFormState) => any;
-    currentUser: TCurrentUser;
+	onSubmitForm: (user: TCurrentUser) => any;
+	currentUser: TCurrentUser;
 }
 
 interface SettingsFormState {
-    image: string;
-    username: string;
-    bio: string;
-    email: string;
-    password?: string;
+	image: string;
+	username: string;
+	bio: string;
+	email: string;
+	password?: string;
 }
 
-const SettingsForm: React.FC<SettingsFromProps> = ({currentUser, onSubmitForm}) => {
+const SettingsForm: React.FC<SettingsFromProps> = ({
+	currentUser,
+	onSubmitForm,
+}) => {
+	const [state, setState] = useState<SettingsFormState>({
+		image: "",
+		username: "",
+		bio: "",
+		email: "",
+		password: "",
+	});
 
-    const [state, setState] = useState<SettingsFormState>({
-        image: '',
-        username: '',
-        bio: '',
-        email: '',
-        password: '',
-    });
+	useEffect(() => {
+		if (!currentUser) return;
+		setState({
+			password: "",
+			image: currentUser.image || "",
+			username: currentUser.username,
+			bio: currentUser.bio,
+			email: currentUser.email,
+		});
+	}, [currentUser]);
 
-    useEffect(() => {
-        if (!currentUser) return;
-        setState({
-            password: '',
-            image: currentUser.image || "",
-            username: currentUser.username,
-            bio: currentUser.bio,
-            email: currentUser.email
-        });
-    }, [currentUser]);
+	const updateState =
+		(field: string) =>
+		(ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+			setState({ ...state, [field]: ev.currentTarget.value });
+		};
 
+	const submitForm = (ev: React.FormEvent) => {
+		ev.preventDefault();
 
-    const updateState = (field: string) => (ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setState({...state, [field]: ev.currentTarget.value})
-    };
+		const user = Object.assign({}, state);
 
-    const submitForm = (ev: React.FormEvent) => {
-        ev.preventDefault();
+		if (!user.password) {
+			delete user.password;
+		}
 
-        const user = Object.assign({}, state);
+		onSubmitForm(user);
+	};
 
-        if (!user.password) {
-            delete user.password;
-        }
+	const inProgress = useSelector<any, boolean>(
+		(state) => state.settings.inProgress
+	);
 
-        onSubmitForm(user);
-    };
+	const [passwordVisible, setPasswordVisible] = useState(false);
+	const passwordVisibleToggle = (event: SyntheticEvent<HTMLAnchorElement>) => {
+		event.preventDefault();
+		setPasswordVisible((state) => !state);
+	};
 
-    const inProgress = useSelector<any, boolean>((state) => state.settings.inProgress);
+	return (
+		<form className={cl.form} onSubmit={submitForm}>
+			<Input
+				label="Изображение профиля"
+				type={"text"}
+				value={state.image}
+				placeholder="Изображение профиля"
+				onChange={updateState("image")}
+			/>
 
-    const [passwordVisible, setPasswordVisible] = useState(false);
-    const passwordVisibleToggle = (event: SyntheticEvent<HTMLAnchorElement>) => {
-        event.preventDefault();
-        setPasswordVisible((state) => !state);
-    };
+			<Input
+				label="Имя пользователя"
+				type={"text"}
+				value={state.username}
+				placeholder="Имя пользователя"
+				onChange={updateState("username")}
+			/>
 
-    return (
-        <form className={cl.form} onSubmit={submitForm}>
+			<Textarea
+				label="Информация о вас"
+				value={state.bio}
+				placeholder="Информация о вас"
+				rows={4}
+				onChange={updateState("bio")}
+			/>
 
-            <Input label="Изображение профиля" type={"text"} value={state.image}
-                   placeholder="Изображение профиля" onChange={updateState('image')}/>
+			<Input
+				label="E-mail"
+				type={"email"}
+				value={state.email}
+				placeholder="E-mail"
+				onChange={updateState("email")}
+			/>
 
-            <Input label="Имя пользователя" type={"text"} value={state.username}
-                   placeholder="Имя пользователя" onChange={updateState('username')}/>
+			<Input
+				label="Новый пароль"
+				type={passwordVisible ? "text" : "password"}
+				value={state?.password || ""}
+				placeholder="Новый пароль"
+				onChange={updateState("password")}
+				onIconClick={passwordVisibleToggle}
+			>
+				{passwordVisible ? <EyeOffIcon /> : <EyeIcon />}
+			</Input>
 
-            <Textarea label="Информация о вас" value={state.bio} placeholder="Информация о вас"
-                      rows={4} onChange={updateState('bio')}/>
-
-            <Input label="E-mail" type={"email"} value={state.email}
-                   placeholder="E-mail" onChange={updateState('email')}/>
-
-            <Input label="Новый пароль" type={passwordVisible ? "text" : "password"} value={state?.password || ''}
-                   placeholder="Новый пароль" onChange={updateState('password')} onIconClick={passwordVisibleToggle}>
-                {passwordVisible ? <EyeOffIcon /> : <EyeIcon />}
-            </Input>
-
-            <div className="m-t-2">
-                <Button type={"submit"} disabled={inProgress}>
-                    Сохранить
-                </Button>
-            </div>
-
-        </form>
-    )
+			<div className="m-t-2">
+				<Button type={"submit"} disabled={inProgress}>
+					Сохранить
+				</Button>
+			</div>
+		</form>
+	);
 };
 
 export default SettingsForm;
