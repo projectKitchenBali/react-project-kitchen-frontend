@@ -1,8 +1,10 @@
-import React, {ChangeEvent, useEffect, useState} from "react";
+import React, {ChangeEvent, SyntheticEvent, useEffect, useState} from "react";
 import Input from "../input/input";
 import Button from "../button/button";
 import Textarea from "../textarea/textarea";
 import {useSelector} from "react-redux";
+import EyeOffIcon from "../../assets/icons/eye-off-icon";
+import EyeIcon from "../../assets/icons/eye-icon";
 import cl from './settings.module.css';
 
 interface SettingsFromProps {
@@ -58,6 +60,12 @@ const SettingsForm: React.FC<SettingsFromProps> = ({currentUser, onSubmitForm}) 
 
     const inProgress = useSelector<any, boolean>((state) => state.settings.inProgress);
 
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    const passwordVisibleToggle = (event: SyntheticEvent<HTMLAnchorElement>) => {
+        event.preventDefault();
+        setPasswordVisible((state) => !state);
+    };
+
     return (
         <form className={cl.form} onSubmit={submitForm}>
 
@@ -73,8 +81,10 @@ const SettingsForm: React.FC<SettingsFromProps> = ({currentUser, onSubmitForm}) 
             <Input label="E-mail" type={"email"} value={state.email}
                    placeholder="E-mail" onChange={updateState('email')}/>
 
-            <Input label="Новый пароль" type={"password"} value={state?.password || ''}
-                   placeholder="Новый пароль" onChange={updateState('password')}/>
+            <Input label="Новый пароль" type={passwordVisible ? "text" : "password"} value={state?.password || ''}
+                   placeholder="Новый пароль" onChange={updateState('password')} onIconClick={passwordVisibleToggle}>
+                {passwordVisible ? <EyeOffIcon /> : <EyeIcon />}
+            </Input>
 
             <div className="m-t-2">
                 <Button type={"submit"} disabled={inProgress}>
