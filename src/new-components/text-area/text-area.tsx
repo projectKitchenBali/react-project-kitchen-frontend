@@ -21,17 +21,17 @@ const TextArea: FC<
 			setParentHeight("auto");
 		} else {
 			textAreaRef.current &&
-				setParentHeight(`${textAreaRef.current.scrollHeight + 2}px`);
+				setParentHeight(`${textAreaRef.current.scrollHeight + 4}px`);
 			setTextAreaHeight("auto");
 			textAreaRef.current &&
-				setTextAreaHeight(`${textAreaRef.current.scrollHeight + 2}px`);
+				setTextAreaHeight(`${textAreaRef.current.scrollHeight + 4}px`);
 		}
 	}, [text, props.value]);
 
 	const onChangeHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setTextAreaHeight("auto");
 		textAreaRef.current &&
-			setParentHeight(`${textAreaRef.current.scrollHeight + 2}px`);
+			setParentHeight(`${textAreaRef.current.scrollHeight + 4}px`);
 		setText(event.target.value);
 
 		if (props.onChange) {
