@@ -48,3 +48,8 @@
 	box-shadow: none;
 	resize: none;
 }
+
+.textArea:focus {
+	border: 2px solid var(--interface-accent);
+	outline: none;
+}
