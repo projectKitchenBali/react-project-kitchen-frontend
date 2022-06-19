@@ -116,7 +116,7 @@ const SettingsForm: React.FC<SettingsFromProps> = ({
 				{passwordVisible ? <EyeOffIcon /> : <EyeIcon />}
 			</Input>
 
-			<div className="m-t-2">
+			<div className={cl.form_save_button_group}>
 				<Button type={"submit"} disabled={inProgress}>
 					Сохранить
 				</Button>

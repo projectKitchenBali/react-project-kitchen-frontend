@@ -42,28 +42,22 @@ const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
 
 const Settings: React.FC<SettingsProps> = (props) => {
 	return (
-		<div className={cl.page}>
-			<div className="container page">
-				<div className="row">
-					<div className="col-md-6 offset-md-3 col-xs-12">
-						<h2 className="text-xs-center m-b-3 text_type_main-h2">
-							Ваши настройки
-						</h2>
-						<ListErrors errors={props.errors}></ListErrors>
-						<SettingsForm
-							currentUser={props.currentUser}
-							onSubmitForm={props.onSubmitForm}
-						/>
-						<hr className={cl.hr} />
-						<a
-							href="#"
-							className={`${cl.logout} text_type_main-default`}
-							onClick={props.onClickLogout}
-						>
-							Выйти из аккаунта
-						</a>
-					</div>
-				</div>
+		<div className={cl.container}>
+			<div className={cl.block}>
+				<h2 className={`text_type_main-h2 ${cl.heading}`}>Ваши настройки</h2>
+				<ListErrors errors={props.errors}></ListErrors>
+				<SettingsForm
+					currentUser={props.currentUser}
+					onSubmitForm={props.onSubmitForm}
+				/>
+				<hr className={cl.hr} />
+				<a
+					href="#"
+					className={`${cl.logout} text_type_main-default`}
+					onClick={props.onClickLogout}
+				>
+					Выйти из аккаунта
+				</a>
 			</div>
 		</div>
 	);

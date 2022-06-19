@@ -1,5 +1,36 @@
-.page h2 {
+:root {
+	--container-max-width: 1200px;
+	--container-padding-horizontal: 15px;
+}
+
+.container {
+	display: flow-root;
+	box-sizing: content-box;
+	max-width: var(--container-max-width);
+	margin-top: 1.5rem;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var(--container-padding-horizontal);
+	padding-right: var(--container-padding-horizontal);
+}
+
+.block {
+	max-width: 100%;
+	box-sizing: border-box;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media (min-width: 544px) {
+	.block {
+		width: 50%;
+	}
+}
+
+.heading {
+	text-align: center !important;
 	color: #f2f2f3;
+	margin-bottom: 3rem !important;
 }
 
 .hr {
@@ -24,4 +55,8 @@
 	content: "";
 	display: table;
 	clear: both;
+}
+
+.form_save_button_group {
+	margin-top: 1.5rem !important;
 }
