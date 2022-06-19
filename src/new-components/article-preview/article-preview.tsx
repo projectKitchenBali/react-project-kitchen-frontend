@@ -11,6 +11,8 @@ import { AvatarIcon, LikeFilledIcon, LikeIcon } from "../../assets/icons";
 import Button from "../button/button";
 
 import styles from "./article-preview.module.css";
+import Tag from "../tags/tag/tag";
+import TagList from "../tags/tag-list/tag-list";
 
 // type TActionsFavorite = "ARTICLE_FAVORITED" | "ARTICLE_UNFAVORITED";
 
@@ -117,15 +119,15 @@ const ArticlePreview: React.FC<IArticlePreviewProps> = ({
 					<p className="text_type_main-default">{article.description}</p>
 					<div className={styles["card-links"]}>
 						<Button>Читать полностью</Button>
-						<ul className={`${styles["tags-list"]} text_type_main-caption`}>
+						<TagList width={481}>
 							{article.tagList.map((tag) => {
 								return (
-									<li className={styles["tags-default"]} key={tag}>
-										{tag}
+									<li key={tag}>
+										<Tag>{tag}</Tag>
 									</li>
 								);
 							})}
-						</ul>
+						</TagList>
 					</div>
 				</Link>
 			</div>

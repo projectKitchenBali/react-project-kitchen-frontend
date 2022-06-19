@@ -71,3 +71,17 @@ type RegisterForm = {
 type TErrors = {
 	[error: string]: string;
 };
+
+interface ITag {
+	onClick?: SyntheticEvent;
+}
+
+interface ITagList {
+	width?: string | number;
+}
+
+interface ITags {
+	textTitle?: string;
+	tags: Array<string>;
+	onClickTag: (...arg) => void;
+}
