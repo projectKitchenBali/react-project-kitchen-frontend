@@ -39,8 +39,10 @@ const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
 			type: FOLLOW_USER,
 			payload: agent.Profile.follow(username),
 		}),
-	onLoad: (payload: Promise<[TUser, TArticle]>) =>
-		dispatch({ type: PROFILE_PAGE_LOADED, payload }),
+	onLoad: (
+		pager: (page: number) => void,
+		payload: Promise<[TUser, TArticle]>
+	) => dispatch({ type: PROFILE_PAGE_LOADED, pager, payload }),
 	onFavoriteLoad: (
 		pager: (page: number) => void,
 		payload: Promise<[TUser, TArticle]>
@@ -54,7 +56,10 @@ const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
 });
 
 interface IProfile {
-	onLoad: (payload: Promise<[TUser, TArticle]>) => void;
+	onLoad: (
+		pager: (page: number) => void,
+		payload: Promise<[TUser, TArticle]>
+	) => void;
 	onFollow: (payload: string) => void;
 	onUnfollow: (payload: string) => void;
 	onUnload: () => void;
@@ -92,6 +97,8 @@ const Profile: React.FC<IProfile> = ({ ...props }) => {
 	const onClickAll = () => {
 		setCurrent("Ваши посты");
 		props.onLoad(
+			(page: number) =>
+				agent.Articles.byAuthor(props.match.params.username, page),
 			Promise.all([
 				agent.Profile.get(props.match.params.username),
 				agent.Articles.byAuthor(props.match.params.username),
@@ -104,6 +111,8 @@ const Profile: React.FC<IProfile> = ({ ...props }) => {
 			onFavorite();
 		} else {
 			props.onLoad(
+				(page: number) =>
+					agent.Articles.byAuthor(props.match.params.username, page),
 				Promise.all([
 					agent.Profile.get(props.match.params.username),
 					agent.Articles.byAuthor(props.match.params.username),

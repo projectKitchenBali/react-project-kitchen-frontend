@@ -7,13 +7,18 @@ import { AnyAction } from "redux";
 import styles from "./list-pagination.module.css";
 
 const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
-	onSetPage: (page: number, payload: any) =>
-		dispatch({ type: SET_PAGE, page, payload }),
+	onSetPage: (
+		page: number,
+		payload: Omit<TArticleList, "articles" | "articlesCount">
+	) => dispatch({ type: SET_PAGE, page, payload }),
 });
 
 interface IListPagination {
-	onSetPage: (page: number, payload: any) => void;
-	pager: (page: number) => void;
+	onSetPage: (
+		page: number,
+		payload: Omit<TArticleList, "articles" | "articlesCount">
+	) => void;
+	pager: (page: number) => Omit<TArticleList, "articles" | "articlesCount">;
 	articlesCount: number;
 	currentPage: number;
 }
@@ -30,7 +35,6 @@ const ListPagination: React.FC<IListPagination> = (props) => {
 
 	const setPage = (page: number) => {
 		if (props.pager) {
-			console.log(props.pager);
 			props.onSetPage(page, props.pager(page));
 		} else {
 			props.onSetPage(page, agent.Articles.all(page));

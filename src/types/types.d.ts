@@ -25,7 +25,7 @@ type TArticleList = {
 	articles: TArticle[];
 	articlesCount: number;
 	currentPage: number;
-	pager: (page: number) => void;
+	pager: (page: number) => Omit<TArticleList, "articles" | "articlesCount">;
 	tab: string;
 	tag: string;
 	tags: string[];
@@ -35,6 +35,7 @@ type TCurrentUser = {
 	username: string;
 	email: string;
 	image: string;
+	bio: string;
 };
 
 type TComment = {
@@ -64,6 +65,11 @@ type RegisterForm = {
 	errors: {
 		[error: string]: string;
 	};
+};
+
+// Общий тип для ошибок, которые приходят с api
+type TErrors = {
+	[error: string]: string;
 };
 
 interface ITag {

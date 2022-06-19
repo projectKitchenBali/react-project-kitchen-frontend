@@ -4,7 +4,7 @@ import ListPagination from "../list-pagination/list-pagination";
 import cl from "./article-list.module.css";
 
 interface ArticleListProps {
-	pager: (page: number) => void;
+	pager: (page: number) => Omit<TArticleList, "articles" | "articlesCount">;
 	articles: TArticle[];
 	articlesCount: number;
 	currentPage: number;
