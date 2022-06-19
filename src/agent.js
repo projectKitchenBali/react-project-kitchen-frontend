@@ -3,6 +3,7 @@ import _superagent from "superagent";
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
+//const API_ROOT = "http://kitchen.bonuts.ru/api";
 const API_ROOT = "http://localhost:3000/api";
 
 const encode = encodeURIComponent;

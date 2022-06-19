@@ -1,0 +1,6 @@
+.label {
+	display: inline-block;
+	margin-bottom: 0;
+	padding: 0.5rem 0.75rem;
+	color: var(--text-primary-color);
+}
