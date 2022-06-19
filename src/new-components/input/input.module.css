@@ -9,6 +9,14 @@
 	line-height: 24px;
 }
 
+input {
+	/* todo вынести в глобальный стиль */
+	box-sizing: border-box;
+	margin: 0;
+	border-radius: 0;
+	font: inherit;
+}
+
 .label {
 	display: inline-block;
 	margin-bottom: 0;

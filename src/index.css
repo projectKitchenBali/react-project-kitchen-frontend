@@ -4,6 +4,7 @@
 	--error-color: #f20d33;
 	--interface-accent: #4c4cff;
 	--background-element: #2f2f37;
+	--background-secondary: #1c1c21;
 }
 
 @font-face {
@@ -75,4 +76,10 @@ a:focus,
 a:active {
 	color: inherit;
 	text-decoration: none;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }

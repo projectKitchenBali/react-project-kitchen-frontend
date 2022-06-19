@@ -1,7 +1,7 @@
 import { Banner } from "../../new-components/banner/banner";
 import MainView from "../../new-components/home/main-view/main-view";
 import React from "react";
-import Tags from "./Tags";
+import Tags from "../../new-components/tags/tags";
 import agent from "../../agent";
 import { connect } from "react-redux";
 import {
@@ -58,14 +58,11 @@ class Home extends React.Component {
 					<div className="row">
 						<MainView />
 						<div className="col-md-3">
-							<div className="sidebar">
-								<p>Popular Tags</p>
-
-								<Tags
-									tags={this.props.tags}
-									onClickTag={this.props.onClickTag}
-								/>
-							</div>
+							<Tags
+								textTitle={"Популярные теги"}
+								tags={this.props.tags}
+								onClickTag={this.props.onClickTag}
+							/>
 						</div>
 					</div>
 				</div>
