@@ -35,6 +35,7 @@ type TCurrentUser = {
 	username: string;
 	email: string;
 	image: string;
+	bio: string;
 };
 
 type TComment = {
@@ -64,4 +65,9 @@ type RegisterForm = {
 	errors: {
 		[error: string]: string;
 	};
+};
+
+// Общий тип для ошибок, которые приходят с api
+type TErrors = {
+	[error: string]: string;
 };
