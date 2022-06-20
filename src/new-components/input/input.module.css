@@ -13,8 +13,8 @@ input {
 	/* todo вынести в глобальный стиль */
 	box-sizing: border-box;
 	margin: 0;
-	border-radius: 0;
 	font: inherit;
+	border-radius: 0;
 }
 
 .label {

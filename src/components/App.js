@@ -6,7 +6,7 @@ import { Route, Switch } from "react-router-dom";
 import Article from "../components/Article";
 import Editor from "../new-components/editor/editor";
 import Home from "../components/Home";
-import Login from "../new-components/login/Login";
+import Login from "../new-components/login/login";
 import Profile from "../new-components/profile/profile";
 import Register from "../new-components/register/register";
 import Settings from "../new-components/settings/settings";
