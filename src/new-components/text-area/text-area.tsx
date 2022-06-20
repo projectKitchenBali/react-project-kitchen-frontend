@@ -5,8 +5,11 @@ import React, {
 	useRef,
 	TextareaHTMLAttributes,
 } from "react";
+import styles from "./text-area.module.css";
 
-const TextArea: FC<TextareaHTMLAttributes<HTMLTextAreaElement>> = (props) => {
+const TextArea: FC<
+	TextareaHTMLAttributes<HTMLTextAreaElement> & { label?: string }
+> = (props) => {
 	const textAreaRef = useRef<HTMLTextAreaElement>(null);
 	const [text, setText] = useState("");
 	const [textAreaHeight, setTextAreaHeight] = useState("auto");
@@ -18,17 +21,17 @@ const TextArea: FC<TextareaHTMLAttributes<HTMLTextAreaElement>> = (props) => {
 			setParentHeight("auto");
 		} else {
 			textAreaRef.current &&
-				setParentHeight(`${textAreaRef.current.scrollHeight + 2}px`);
+				setParentHeight(`${textAreaRef.current.scrollHeight + 4}px`);
 			setTextAreaHeight("auto");
 			textAreaRef.current &&
-				setTextAreaHeight(`${textAreaRef.current.scrollHeight + 2}px`);
+				setTextAreaHeight(`${textAreaRef.current.scrollHeight + 4}px`);
 		}
 	}, [text, props.value]);
 
 	const onChangeHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setTextAreaHeight("auto");
 		textAreaRef.current &&
-			setParentHeight(`${textAreaRef.current.scrollHeight + 2}px`);
+			setParentHeight(`${textAreaRef.current.scrollHeight + 4}px`);
 		setText(event.target.value);
 
 		if (props.onChange) {
@@ -42,6 +45,7 @@ const TextArea: FC<TextareaHTMLAttributes<HTMLTextAreaElement>> = (props) => {
 				minHeight: parentHeight,
 			}}
 		>
+			{props.label && <label className={styles.label}>{props.label}</label>}
 			<textarea
 				{...props}
 				ref={textAreaRef}

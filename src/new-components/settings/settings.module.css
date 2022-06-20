@@ -1,0 +1,63 @@
+:root {
+	--container-max-width: 1200px;
+	--container-padding-horizontal: 15px;
+}
+
+.container {
+	display: flow-root;
+	box-sizing: content-box;
+	max-width: var(--container-max-width);
+	margin-top: 1.5rem;
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: var(--container-padding-horizontal);
+	padding-left: var(--container-padding-horizontal);
+}
+
+.block {
+	box-sizing: border-box;
+	max-width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@media (min-width: 544px) {
+	.block {
+		width: 50%;
+	}
+}
+
+.heading {
+	margin-bottom: 3rem !important;
+	color: #f2f2f3;
+	text-align: center !important;
+}
+
+.hr {
+	margin: 40px 0;
+	border: solid 1px #2f2f37;
+}
+
+.logout {
+	display: block;
+	color: #f20d33;
+	text-align: center;
+	text-decoration: none;
+}
+
+.logout:hover {
+	color: #f20d33;
+	text-decoration: underline;
+}
+
+.form::after {
+	display: table;
+	clear: both;
+
+	/* @todo верстка в компоненте кнопки разъезжается */
+	content: "";
+}
+
+.form_save_button_group {
+	margin-top: 1.5rem !important;
+}

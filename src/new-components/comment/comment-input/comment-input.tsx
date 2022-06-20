@@ -3,8 +3,9 @@ import agent from "../../../agent";
 import { ADD_COMMENT } from "../../../constants/actionTypes";
 import { connect } from "react-redux";
 import styles from "./comment-input.module.css";
-import TextArea from "../text-area/text-area";
+import TextArea from "../../text-area/text-area";
 import { UserMetaWithActions } from "../../user-meta-with-actions/user-meta-with-actions";
+
 const mapDispatchToProps = (dispatch: any) => ({
 	onSubmit: (payload: string) => dispatch({ type: ADD_COMMENT, payload }),
 });

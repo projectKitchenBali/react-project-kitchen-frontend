@@ -8,7 +8,7 @@ import Input from "../input/input";
 import EyeIcon from "../../assets/icons/eye-icon";
 import EyeOffIcon from "../../assets/icons/eye-off-icon";
 
-import styles from "../login/Login.module.css";
+import styles from "../login/login.module.css";
 import Button from "../button/button";
 
 const Register: FC = () => {

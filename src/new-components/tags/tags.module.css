@@ -1,0 +1,15 @@
+.sidebar {
+	margin-bottom: 0.2rem;
+	padding: 16px;
+	background: var(--background-secondary);
+	border-radius: 20px;
+}
+
+.sidebar p {
+	margin-bottom: 16px;
+	color: var(--text-primary-color);
+}
+
+.tag-list {
+	width: auto;
+}

@@ -3,6 +3,7 @@ import _superagent from "superagent";
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
+//const API_ROOT = "http://kitchen.bonuts.ru/api";
 const API_ROOT = "http://localhost:3000/api";
 
 const encode = encodeURIComponent;
@@ -57,7 +58,7 @@ const Articles = {
 	favorite: (slug) => requests.post(`/articles/${slug}/favorite`),
 	favoritedBy: (author, page) =>
 		requests.get(`/articles?favorited=${encode(author)}&${limit(5, page)}`),
-	feed: () => requests.get("/articles/feed?limit=5&offset=0"),
+	feed: (page) => requests.get(`/articles/feed?${limit(5, page)}`),
 	get: (slug) => requests.get(`/articles/${slug}`),
 	unfavorite: (slug) => requests.del(`/articles/${slug}/favorite`),
 	update: (article) =>

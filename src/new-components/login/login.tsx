@@ -11,7 +11,7 @@ import {
 
 import EyeIcon from "../../assets/icons/eye-icon";
 import Input from "../input/input";
-import cl from "./Login.module.css";
+import cl from "./login.module.css";
 import Button from "../button/button";
 import EyeOffIcon from "../../assets/icons/eye-off-icon";
 
