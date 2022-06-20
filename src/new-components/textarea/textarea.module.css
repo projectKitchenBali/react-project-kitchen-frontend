@@ -25,4 +25,5 @@ textarea {
 	margin: 0;
 	font: inherit;
 	border-radius: 0;
+	resize: none;
 }
