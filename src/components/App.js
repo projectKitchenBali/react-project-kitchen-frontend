@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { APP_LOAD, REDIRECT } from "../constants/actionTypes";
 import { Route, Switch } from "react-router-dom";
-import Article from "../components/Article";
+import Article from "../new-components/article/article";
 import Editor from "../new-components/editor/editor";
 import Home from "../components/Home";
 import Login from "../new-components/login/login";
